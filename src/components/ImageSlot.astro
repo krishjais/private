@@ -1,0 +1,65 @@
+---
+import { siteImages } from '../data/images';
+
+interface Props {
+  imageKey: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  className?: string;
+  aspectRatio?: string;
+}
+
+const {
+  imageKey,
+  alt: customAlt,
+  width: customWidth,
+  height: customHeight,
+  loading = 'lazy',
+  className = '',
+  aspectRatio = '4 / 3'
+} = Astro.props;
+
+const meta = siteImages[imageKey] || {
+  src: `/images/${imageKey}.webp`,
+  alt: 'New Durga Wire Netting Work component illustration',
+  width: 800,
+  height: 600,
+  replaceWithRealPhoto: true
+};
+
+const finalSrc = meta.src;
+const finalAlt = customAlt || meta.alt;
+const finalWidth = customWidth || meta.width;
+const finalHeight = customHeight || meta.height;
+---
+
+<div class={`image-container ${className}`} style={`aspect-ratio: ${aspectRatio};`}>
+  <img
+    src={finalSrc}
+    alt={finalAlt}
+    width={finalWidth}
+    height={finalHeight}
+    loading={loading}
+    decoding="async"
+    class="image-media"
+  />
+</div>
+
+<style>
+  .image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--mist);
+    border: 1px solid var(--line);
+  }
+
+  .image-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ImageSlot from '../components/ImageSlot.astro';
+import PlaceholderTag from '../components/PlaceholderTag.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Quality Assurance and ISO 9001:2015 Certification";
+const pageDescription = "Quality inspection at New Durga Wire Netting Work: ISO 9001:2015 certified Quality Management System, dimensional checks, electrical coil resistance testing, and pre-dispatch foam packing verification.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Quality', href: '/quality' }]} />
+
+  <!-- ISO 9001:2015 Certification Section -->
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="QUALITY MANAGEMENT SYSTEM"
+        title="ISO 9001:2015 Certification"
+        subtitle="Our quality management system is certified to ISO 9001:2015 by Benchmark Veritas Quality Institute."
+      />
+
+      <div class="iso-card card">
+        <div class="iso-grid">
+          <div class="iso-info">
+            <span class="badge-iso">ISO 9001:2015 CERTIFIED</span>
+            <h3>Quality Management System</h3>
+            <p>
+              New Durga Wire Netting Works operates under a certified Quality Management System complying with ISO 9001:2015. Our manufacturing, precision machining, in-house finishing, and testing protocols adhere to documented quality procedures.
+            </p>
+
+            <div class="iso-meta-list">
+              <div class="meta-item">
+                <span class="m-label">Certificate Number:</span>
+                <span class="m-val">{siteConfig.iso.certificateNumber}</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="m-label">Certification Body:</span>
+                <span class="m-val">{siteConfig.iso.body}</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="m-label">Issue Date:</span>
+                <span class="m-val">{siteConfig.iso.issueDate}</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="m-label">Expiry Date:</span>
+                <span class="m-val">{siteConfig.iso.expiryDate}</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="m-label">Certificate Verification:</span>
+                <span class="m-val">
+                  <a href={siteConfig.iso.verifyUrl} target="_blank" rel="noopener noreferrer" class="verify-link">
+                    Verify on isobv.in
+                  </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="scope-container">
+              <h4 class="scope-heading">Registered Scope of Certification</h4>
+              <ul class="scope-list">
+                {siteConfig.iso.scope.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="cert-actions">
+              <a href={siteConfig.iso.certificateFile} class="btn btn-primary" download>
+                Download Certificate (PDF)
+              </a>
+              <a href={siteConfig.iso.verifyUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                Verify on isobv.in
+              </a>
+            </div>
+          </div>
+
+          <div class="iso-visual">
+            <div class="cert-preview-card card">
+              <a href={siteConfig.iso.certificateFile} class="cert-img-link" title="Open full certificate">
+                <img
+                  src={siteConfig.iso.certificatePreview}
+                  alt="ISO 9001:2015 Certificate for New Durga Wire Netting Works"
+                  width="1193"
+                  height="1600"
+                  loading="lazy"
+                  decoding="async"
+                  class="cert-img"
+                />
+              </a>
+              <div class="cert-caption">
+                <strong>Certificate Document</strong>
+                <span>Click image to view or download full PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Four Checkpoints Table -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="INSPECTION GATES"
+        title="Four Core Quality Checkpoints"
+        subtitle="Inspection is conducted at each stage of fabrication to ensure conformity to component drawings."
+      />
+
+      <table class="table-industrial">
+        <thead>
+          <tr>
+            <th style="width: 28%;">Inspection Stage</th>
+            <th>Inspection Scope and Equipment Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          {siteConfig.qualityCheckpoints.map((qc) => (
+            <tr>
+              <td><strong>{qc.stage}</strong></td>
+              <td>{qc.checks}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div class="quality-photos-grid">
+        <div class="photo-card card">
+          <ImageSlot imageKey="quality-caliper" alt="Calibrated vernier caliper checking machined pin dimensions" aspectRatio="16 / 10" />
+          <div class="photo-caption">
+            <strong>Dimensional Inspection:</strong> Calibrated vernier calipers, micrometers, and thread gauges verify machined pin and bush tolerances.
+          </div>
+        </div>
+
+        <div class="photo-card card">
+          <ImageSlot imageKey="quality-coil-test" alt="Electrical test equipment checking relay coil resistance" aspectRatio="16 / 10" />
+          <div class="photo-caption">
+            <strong>Electrical Functional Testing:</strong> Calibrated test equipment tests coil resistance in ohms, contact continuity, and switching action.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packing and Dispatch Inspection -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="dispatch-grid">
+        <div class="dispatch-content">
+          <span class="eyebrow">FINAL DISPATCH VERIFICATION</span>
+          <h2>Protective Packing and Transit Assurance</h2>
+          <span class="red-rule"></span>
+          <p>
+            Precision signalling relays contain sensitive electromechanical contacts and calibrated armatures that require rigorous protection during transportation.
+          </p>
+          <p>
+            Before release from our Pithampur works, every consignment undergoes pre-dispatch quantity verification, visual damage inspection, and protective packing:
+          </p>
+          <ul class="dispatch-points">
+            <li>
+              <strong>Custom Foam Packing:</strong> Relay assemblies are individually nested in custom foam slots to prevent shock and vibration damage.
+            </li>
+            <li>
+              <strong>Corrosion Prevention:</strong> Machined child parts are packed with protective barrier wraps for humidity protection during storage and transit.
+            </li>
+            <li>
+              <strong>Rigid Boxes:</strong> Coach fan guards are packed in heavy-duty transit boxes with corner reinforcements.
+            </li>
+          </ul>
+        </div>
+
+        <div class="dispatch-media">
+          <ImageSlot imageKey="process-packing" alt="Protective foam packing of relay assemblies and crating for transit" aspectRatio="4 / 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .iso-card {
+    padding: 36px;
+    background-color: var(--mist);
+  }
+
+  .iso-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .badge-iso {
+    display: inline-block;
+    background-color: var(--blue);
+    color: var(--paper);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  .iso-info h3 {
+    margin-bottom: 8px;
+  }
+
+  .iso-info p {
+    font-size: 15px;
+    color: var(--body);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .iso-meta-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+    background-color: var(--paper);
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .meta-item {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .m-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .m-val {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .verify-link {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .verify-link:hover {
+    color: var(--red);
+  }
+
+  .scope-container {
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+  }
+
+  .scope-heading {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+
+  .scope-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--body);
+  }
+
+  .cert-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .iso-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cert-preview-card {
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .cert-img-link {
+    display: block;
+    border: 1px solid var(--line);
+    transition: transform var(--transition);
+  }
+
+  .cert-img-link:hover {
+    transform: scale(1.02);
+  }
+
+  .cert-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .cert-caption {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cert-caption strong {
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .cert-caption span {
+    font-size: 11px;
+    color: var(--body);
+  }
+
+  .quality-photos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .photo-caption {
+    padding: 16px;
+    font-size: 14px;
+    color: var(--body);
+  }
+
+  .photo-caption strong {
+    color: var(--ink);
+  }
+
+  .dispatch-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .dispatch-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 15px;
+  }
+
+  .dispatch-points li {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .dispatch-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--red);
+  }
+
+  @media (max-width: 900px) {
+    .iso-grid,
+    .quality-photos-grid,
+    .dispatch-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import MachineCard from '../components/MachineCard.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Machinery and Manufacturing Infrastructure";
+const pageDescription = "Explore the machine shop at New Durga Wire Netting Work in Pithampur: CNC turning, 10 to 75 ton press machines, VMC, DRO drilling, and Traub automatic lathes.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Manufacturing', href: '/manufacturing' }]} />
+
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="WORKSHOP INFRASTRUCTURE"
+        title="In-House Machine Tool Installations"
+        subtitle="Our Pithampur workshop is equipped with dedicated machine tools for turning, stamping, milling, and drilling. We maintain repeat production capabilities for standardized railway components and custom job work."
+      />
+
+      <div class="jobwork-intro-banner card">
+        <div class="banner-body">
+          <h3>Customer-Specific Job Work Available</h3>
+          <p>
+            Beyond our standard product lines, our machine shop bays undertake subcontract turning, press blanking, and VMC milling against customer drawings or physical samples.
+          </p>
+          <a href="/job-work" class="btn btn-secondary-blue">
+            Review Job Work Capabilities
+          </a>
+        </div>
+      </div>
+
+      <div class="machines-catalog">
+        {siteConfig.machines.map((machine) => (
+          <div class="machine-catalog-item">
+            <MachineCard
+              name={machine.name}
+              summary={machine.summary}
+              partsMade={machine.partsMade}
+              imageKey={machine.imageKey}
+            />
+          </div>
+        ))}
+      </div>
+
+      <p class="machines-note">
+        Machine details and capacity are <a href="/contact">shared on request with a drawing or sample</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Finishing Plant Note -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="SURFACE AND HEAT TREATMENT"
+        title="Integrated In-House Finishing Bays"
+        subtitle="All finishing operations are conducted directly inside our factory without subcontracting."
+      />
+
+      <div class="finishing-grid">
+        <div class="finishing-card card">
+          <h4>Electroplating Facility</h4>
+          <p>
+            Applies protective corrosion-resistant electroplating with the required gold-yellow finish on relay mounting brackets and structural child parts.
+          </p>
+        </div>
+
+        <div class="finishing-card card">
+          <h4>Electrostatic Powder Coating Line</h4>
+          <p>
+            In-house powder coating booth and curing setup applying uniform, impact-resistant painted coatings on mild steel coach fan guard assemblies.
+          </p>
+        </div>
+
+        <div class="finishing-card card">
+          <h4>Vacuum Annealing Furnace</h4>
+          <p>
+            Thermal stress relief furnace operating under a controlled vacuum environment to relieve stresses in formed metals and magnetic relay cores without oxidation.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="/process" class="btn btn-primary">
+          Explore Manufacturing Process
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .jobwork-intro-banner {
+    padding: 28px;
+    margin-bottom: 48px;
+    background-color: var(--mist);
+  }
+
+  .banner-body h3 {
+    margin-bottom: 8px;
+  }
+
+  .banner-body p {
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+
+  .machines-catalog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .machines-note {
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--body);
+    text-align: center;
+  }
+
+  .machines-note a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .finishing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .finishing-card {
+    padding: 24px;
+  }
+
+  .finishing-card h4 {
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .finishing-card p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .cta-row {
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .machines-catalog {
+      grid-template-columns: 1fr;
+    }
+    .finishing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

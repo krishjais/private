@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Privacy Policy";
+const pageDescription = "Privacy policy for New Durga Wire Netting Work in compliance with the Digital Personal Data Protection Act, 2023.";
+const lastUpdated = "Pre-launch draft";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Privacy Policy', href: '/privacy-policy' }]} />
+
+  <section class="section section-paper">
+    <div class="container legal-container">
+      <SectionHeading
+        eyebrow="LEGAL AND DATA GOVERNANCE"
+        title="Privacy Policy"
+      />
+      <div class="legal-date">Last updated: {lastUpdated}</div>
+
+      <div class="legal-notice card">
+        <strong>Notice for site administrators:</strong> This privacy policy has been prepared for a B2B industrial component manufacturer under the framework of India's Digital Personal Data Protection Act, 2023 (DPDP Act). A qualified legal professional should review this document prior to commercial deployment.
+      </div>
+
+      <div class="legal-content">
+        <h3>1. Overview and Scope</h3>
+        <p>
+          New Durga Wire Netting Work ("we", "us", or "our"), having its manufacturing facility and registered address at Sector 59-A, Industrial Area, Pithampur, Dist. Dhar, Madhya Pradesh 454775, respects the privacy of business representatives visiting our website. This Privacy Policy sets out how we collect, handle, and store personal and business data provided to us through this website in compliance with applicable Indian law, including the Digital Personal Data Protection Act, 2023.
+        </p>
+
+        <h3>2. What Data We Collect</h3>
+        <p>
+          We do not require user account registration to browse this website. We only collect data that you voluntarily submit through our contact and quotation request form:
+        </p>
+        <ul>
+          <li><strong>Contact identity:</strong> Your full name.</li>
+          <li><strong>Business identity:</strong> Your company, organization, or contractor name.</li>
+          <li><strong>Direct communication data:</strong> Business email address and telephone or mobile phone number.</li>
+          <li><strong>Procurement requirements:</strong> Selected component category and your written message detailing part specifications, quantities, and delivery schedules.</li>
+        </ul>
+
+        <h3>3. Purpose of Processing</h3>
+        <p>
+          The information collected is used exclusively for legitimate business communication:
+        </p>
+        <ul>
+          <li>To review and respond to requests for quotation (RFQs) and technical inquiries.</li>
+          <li>To assess manufacturing feasibility, tooling, and cycle time for specified components.</li>
+          <li>To communicate order status, dispatch schedules, and technical queries directly with your procurement and engineering team.</li>
+        </ul>
+
+        <h3>4. Data Processing and Service Providers</h3>
+        <p>
+          Form submissions are transmitted securely to our designated email accounts via Web3Forms (an automated form submission endpoint). Received inquiries are stored and processed within our email systems provided by Google and Rediffmail. We do not sell, rent, lease, or trade commercial inquiry data to third-party marketing companies.
+        </p>
+
+        <h3>5. Cookies and Web Trackers</h3>
+        <p>
+          This website uses only essential technical session mechanisms required for page navigation and security. We do not use third-party advertising cookies, behavioural profiling trackers, or invasive social media tracking scripts.
+        </p>
+
+        <h3>6. Data Retention and Storage</h3>
+        <p>
+          Inquiry records and business communications are retained for the duration of the commercial relationship and as required by Indian commercial, tax, and GST recordkeeping regulations (GSTIN: {siteConfig.gst}).
+        </p>
+
+        <h3>7. Your Rights and Deletion Requests</h3>
+        <p>
+          Under the Digital Personal Data Protection Act, 2023, you have the right to request access to your personal contact data, request corrections, or request deletion of contact records where retention is no longer mandated by statutory tax and accounting laws.
+        </p>
+        <p>
+          To exercise these rights, please email our administrative desk at
+          <a href={`mailto:${siteConfig.emails[0]}`}>{siteConfig.emails[0]}</a>
+          with the subject line "Personal Data Request". We will verify and process your request within 30 business days.
+        </p>
+
+        <h3>8. Contact for Data Protection Matters</h3>
+        <p>
+          For questions or grievances relating to our privacy practices:
+        </p>
+        <address class="legal-address">
+          <strong>New Durga Wire Netting Work</strong><br />
+          Sector 59-A, Industrial Area,<br />
+          Pithampur, Dist. Dhar, Madhya Pradesh 454775, India.<br />
+          Email: <a href={`mailto:${siteConfig.emails[0]}`}>{siteConfig.emails[0]}</a><br />
+          Telephone: {siteConfig.phones[0]}
+        </address>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-container {
+    max-width: 860px;
+  }
+
+  .legal-date {
+    font-size: 14px;
+    color: var(--body);
+    margin-top: -24px;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .legal-notice {
+    padding: 16px 20px;
+    background-color: var(--mist);
+    border-left: 3px solid var(--blue);
+    margin-bottom: 36px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .legal-content h3 {
+    font-size: 20px;
+    color: var(--ink);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .legal-content p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .legal-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .legal-content li {
+    font-size: 15px;
+    color: var(--body);
+    margin-bottom: 8px;
+    list-style-type: square;
+  }
+
+  .legal-content strong {
+    color: var(--ink);
+  }
+
+  .legal-content a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .legal-address {
+    font-style: normal;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+    background-color: var(--mist);
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 16px;
+  }
+</style>

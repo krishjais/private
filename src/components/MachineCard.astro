@@ -1,0 +1,88 @@
+---
+import ImageSlot from './ImageSlot.astro';
+
+interface Props {
+  name: string;
+  summary: string;
+  partsMade?: string;
+  imageKey: string;
+}
+
+const { name, summary, partsMade, imageKey } = Astro.props;
+---
+
+<article class="machine-card card">
+  <div class="machine-media">
+    <ImageSlot imageKey={imageKey} alt={name} aspectRatio="16 / 10" />
+  </div>
+
+  <div class="machine-body">
+    <h3 class="machine-title">{name}</h3>
+    <p class="machine-desc">{summary}</p>
+
+    {partsMade && (
+      <div class="machine-details">
+        <div class="detail-row">
+          <span class="detail-label">Parts manufactured:</span>
+          <span class="detail-val">{partsMade}</span>
+        </div>
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .machine-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .machine-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .machine-title {
+    font-size: 21px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .machine-desc {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .machine-details {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .detail-row {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .detail-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13px;
+  }
+
+  .detail-val {
+    color: var(--body);
+  }
+</style>

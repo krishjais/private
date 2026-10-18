@@ -1,0 +1,140 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  heading?: string;
+  showSubtitle?: boolean;
+}
+
+const { heading = 'Companies we supply', showSubtitle = true } = Astro.props;
+---
+
+<div class="client-grid-section">
+  <div class="client-header">
+    <span class="eyebrow">VERIFIED CLIENT RELATIONSHIPS</span>
+    <h2 class="client-heading">{heading}</h2>
+    <span class="red-rule"></span>
+    {showSubtitle && (
+      <p class="client-sub">
+        Supplying precision components, relay parts, and coach equipment to established electrical and railway OEMs.
+      </p>
+    )}
+  </div>
+
+  <div class="client-grid">
+    {siteConfig.clients.map((client) => {
+      const name = typeof client === 'string' ? client : client.name;
+      const logo = typeof client === 'object' ? client.logo : null;
+      const alt = typeof client === 'object' ? client.alt : `${name} logo`;
+      const width = typeof client === 'object' ? client.width : 240;
+      const height = typeof client === 'object' ? client.height : 90;
+
+      return (
+        <div class="client-card card">
+          {logo ? (
+            <div class="client-logo-box">
+              <img
+                src={logo}
+                alt={alt}
+                width={width}
+                height={height}
+                loading="lazy"
+                class="client-logo-img"
+              />
+            </div>
+          ) : (
+            <div class="client-badge">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" class="client-icon">
+                <rect x="3" y="3" width="18" height="18" />
+                <path d="M 3 9 L 21 9 M 9 21 L 9 9" />
+              </svg>
+            </div>
+          )}
+          <span class="client-name">{name}</span>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .client-header {
+    margin-bottom: 36px;
+  }
+
+  .client-heading {
+    font-size: var(--text-3xl);
+    margin-bottom: 0;
+  }
+
+  .client-sub {
+    font-size: var(--text-lg);
+    color: var(--body);
+    max-width: 680px;
+  }
+
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .client-card {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--paper);
+    filter: grayscale(100%);
+    opacity: 0.88;
+    transition: filter var(--transition), opacity var(--transition), border-color var(--transition), transform var(--transition);
+    min-height: 180px;
+  }
+
+  .client-card:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+
+  .client-logo-box {
+    width: 100%;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .client-logo-img {
+    max-width: 100%;
+    max-height: 72px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .client-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .client-icon {
+    color: var(--blue);
+  }
+
+  .client-name {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-top: auto;
+  }
+</style>

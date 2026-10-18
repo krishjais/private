@@ -1,0 +1,58 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  isLight?: boolean;
+  align?: 'left' | 'center';
+}
+
+const { eyebrow, title, subtitle, isLight = false, align = 'left' } = Astro.props;
+---
+
+<div class={`section-heading align-${align} ${isLight ? 'is-light' : ''}`}>
+  {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+  <h2 class="heading-title">{title}</h2>
+  <span class="red-rule"></span>
+  {subtitle && <p class="heading-subtitle">{subtitle}</p>}
+</div>
+
+<style>
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .align-center .red-rule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heading-title {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .is-light .heading-title {
+    color: var(--paper);
+  }
+
+  .heading-subtitle {
+    font-size: var(--text-lg);
+    color: var(--body);
+    max-width: 720px;
+    line-height: 1.5;
+  }
+
+  .align-center .heading-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .is-light .heading-subtitle {
+    color: var(--line);
+  }
+</style>

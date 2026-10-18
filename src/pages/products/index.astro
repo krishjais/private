@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { siteConfig } from '../../config/site';
+
+const pageTitle = "Manufactured Railway Products";
+const pageDescription = "Explore our four manufactured product lines: railway signal relay assemblies, relay child parts, and coach fan guards in mild steel and stainless steel.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Products', href: '/products' }]} />
+
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="PRODUCTION CATALOGUE"
+        title="Manufactured Railway and Electrical Components"
+        subtitle="New Durga Wire Netting Work manufactures four precision product lines in Pithampur. All components are produced to approved engineering drawings and strict quality benchmarks."
+      />
+
+      <div class="products-grid">
+        {siteConfig.products.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            summary={prod.summary}
+            slug={prod.slug}
+            imageKey={prod.imageKey}
+            isMajor={prod.isMajor}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Standards Strip -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="standards-banner card">
+        <div class="standards-content">
+          <span class="eyebrow">QUALITY VERIFICATION</span>
+          <h3>Testing and Quality Management</h3>
+          <span class="red-rule"></span>
+          <p>
+            Production is carried out under a quality management system certified to ISO 9001:2015 by Benchmark Veritas Quality Institute. Relay assemblies undergo functional testing for coil resistance, contact continuity, and operate and release characteristics before dispatch.
+          </p>
+          <div class="banner-actions">
+            <a href="/quality" class="btn btn-secondary-blue">
+              Inspect Quality Checkpoints
+            </a>
+            <a href="/contact" class="btn btn-primary">
+              Request Product Specifications
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .standards-banner {
+    padding: 36px;
+    background-color: var(--paper);
+  }
+
+  .banner-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

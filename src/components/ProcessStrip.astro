@@ -1,0 +1,140 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<section class="process-strip section-ink">
+  <div class="container">
+    <div class="strip-header">
+      <span class="eyebrow">MANUFACTURING WORKFLOW</span>
+      <h2 class="strip-title">How we make it in-house</h2>
+      <span class="red-rule"></span>
+      <p class="strip-sub">Every stage is executed under defined inspection criteria from raw material inward to final dispatch.</p>
+    </div>
+
+    <div class="steps-grid">
+      {siteConfig.processes.map((p) => (
+        <div class="step-card">
+          <div class="step-num">0{p.step}</div>
+          <h3 class="step-title">{p.title}</h3>
+          <p class="step-desc">{p.description}</p>
+          <a href="/process" class="step-link">
+            <span>Learn more about {p.title}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <path d="M 5 12 L 19 12 M 12 5 L 19 12 L 12 19" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="strip-cta">
+      <a href="/process" class="btn btn-secondary-light">
+        View complete manufacturing timeline
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-strip {
+    padding-top: var(--space-section);
+    padding-bottom: var(--space-section);
+  }
+
+  .strip-header {
+    margin-bottom: 48px;
+  }
+
+  .strip-title {
+    color: var(--paper);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .process-strip .eyebrow {
+    color: var(--paper);
+  }
+
+  .strip-sub {
+    color: var(--line);
+    max-width: 680px;
+    font-size: var(--text-lg);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .step-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(217, 220, 227, 0.15);
+    padding: 24px 18px;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--transition);
+  }
+
+  .step-card:hover {
+    border-color: var(--red);
+  }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .step-title {
+    font-size: 18px;
+    color: var(--paper);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--line);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .step-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-top: auto;
+    transition: color var(--transition);
+  }
+
+  .step-link:hover {
+    color: var(--red);
+  }
+
+  .strip-cta {
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.lh-chrome-profile/
+lh-test.json
+source-images/
+.DS_Store
+Thumbs.db

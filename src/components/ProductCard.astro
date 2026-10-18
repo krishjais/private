@@ -1,0 +1,105 @@
+---
+import ImageSlot from './ImageSlot.astro';
+
+interface Props {
+  name: string;
+  summary: string;
+  slug: string;
+  imageKey: string;
+  isMajor?: boolean;
+}
+
+const { name, summary, slug, imageKey, isMajor = false } = Astro.props;
+---
+
+<article class={`product-card card ${isMajor ? 'card-major' : ''}`}>
+  <div class="product-card-media">
+    <ImageSlot imageKey={imageKey} alt={name} aspectRatio="4 / 3" />
+    {isMajor && <span class="badge-major">Major Product</span>}
+  </div>
+
+  <div class="product-card-body">
+    <h3 class="product-card-title">
+      <a href={slug}>{name}</a>
+    </h3>
+    <p class="product-card-desc">{summary}</p>
+    <a href={slug} class="product-card-link">
+      <span>View specifications</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+        <path d="M 5 12 L 19 12 M 12 5 L 19 12 L 12 19" />
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .product-card-media {
+    position: relative;
+  }
+
+  .badge-major {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: var(--red);
+    color: var(--paper);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+
+  .product-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .product-card-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .product-card-title a {
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .product-card-title a:hover {
+    color: var(--blue);
+  }
+
+  .product-card-desc {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .product-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: auto;
+    transition: color var(--transition);
+  }
+
+  .product-card-link:hover {
+    color: var(--red);
+  }
+</style>

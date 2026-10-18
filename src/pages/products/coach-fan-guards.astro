@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ImageSlot from '../../components/ImageSlot.astro';
+
+const pageTitle = "Coach Fan Guards in Mild Steel and Stainless Steel";
+const pageDescription = "Radial wire welded coach fan guards in powder-coated mild steel and polished stainless steel. Manufactured in Pithampur to railway coach specifications.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs
+    crumbs={[
+      { name: 'Products', href: '/products' },
+      { name: 'Coach Fan Guards', href: '/products/coach-fan-guards' }
+    ]}
+  />
+
+  <section class="section section-paper">
+    <div class="container">
+      <div class="fan-hero-grid">
+        <div class="fan-hero-info">
+          <span class="eyebrow">RAILWAY COACH SAFETY EQUIPMENT</span>
+          <h1 class="fan-title">Coach Fan Guards</h1>
+          <span class="red-rule"></span>
+          <p class="fan-lead">
+            Manufactured with a rigid radial wire design and welded steel construction, designed to help prevent accidental passenger contact with rotating coach fan blades.
+          </p>
+
+          <div class="compliance-box card">
+            <div class="compliance-row">
+              <span class="c-label">Construction:</span>
+              <span class="c-val">Radial wire design with rigid welded circumferential ring joints</span>
+            </div>
+            <div class="compliance-row">
+              <span class="c-label">Material Options:</span>
+              <span class="c-val">Mild steel (powder-coated) or stainless steel (polished)</span>
+            </div>
+            <div class="compliance-row">
+              <span class="c-label">Guard Requirement:</span>
+              <span class="c-val">Final geometry, wire spacing, mounting, and acceptance criteria follow the purchaser-approved drawing</span>
+            </div>
+            <div class="compliance-row">
+              <span class="c-label">Quality Management:</span>
+              <span class="c-val">Manufactured under a quality management system certified to ISO 9001:2015 (<a href="/quality">review certificate</a>)</span>
+            </div>
+            <div class="compliance-row">
+              <span class="c-label">Finishing Shop:</span>
+              <span class="c-val">In-house electrostatic powder coating line and mechanical polishing</span>
+            </div>
+          </div>
+
+          <div class="fan-actions">
+            <a href="/contact" class="btn btn-primary">
+              Request Fan Guard Quotation
+            </a>
+            <a href="/quality" class="btn btn-secondary">
+              Review Inspection Checkpoints
+            </a>
+          </div>
+        </div>
+
+        <div class="fan-hero-media">
+          <div class="media-duo">
+            <div class="duo-item">
+              <ImageSlot imageKey="fanguard-mild-steel" alt="Coach fan guard in mild steel with powder-coated finish" aspectRatio="4 / 3" />
+              <span class="caption">Mild Steel (Powder Coated)</span>
+            </div>
+            <div class="duo-item">
+              <ImageSlot imageKey="fanguard-stainless" alt="Coach fan guard in stainless steel with polished finish" aspectRatio="4 / 3" />
+              <span class="caption">Stainless Steel (Polished)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table: Mild Steel vs Stainless Steel -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="MATERIAL COMPARISON"
+        title="Mild Steel vs Stainless Steel Comparison"
+        subtitle="Both variants feature rigid radial wire welded construction. Select according to coach specification and environmental conditions."
+      />
+
+      <table class="table-industrial">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Comparison Criteria</th>
+            <th style="width: 37%;">Coach Fan Guard in Mild Steel</th>
+            <th style="width: 38%;">Coach Fan Guard in Stainless Steel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Base Material</strong></td>
+            <td>High tensile mild steel wire and mounting frame</td>
+            <td>Stainless steel wire and frame ring</td>
+          </tr>
+          <tr>
+            <td><strong>Surface Finish</strong></td>
+            <td>Electrostatic powder coating applied in-house for uniform durable surface</td>
+            <td>Polished metallic surface finish</td>
+          </tr>
+          <tr>
+            <td><strong>Corrosion Behaviour</strong></td>
+            <td>Protected by powder-coated polymer barrier layer</td>
+            <td>Inherent oxidation and corrosion resistance suitable for humid routes</td>
+          </tr>
+          <tr>
+            <td><strong>Typical Use</strong></td>
+            <td>Standard passenger coaches, sleeper compartments, and general service coaches</td>
+            <td>Premium passenger coaches, coastal railway routes, and special coach fitments</td>
+          </tr>
+          <tr>
+            <td><strong>Welding and Construction</strong></td>
+            <td>Rigid resistance welded radial wire joints to circumferential frame ring</td>
+            <td>Welded joints with uniform wire spacing and deburred edges</td>
+          </tr>
+          <tr>
+            <td><strong>Quality Testing</strong></td>
+            <td>Wire spacing verification, weld joint pull strength, coating adhesion</td>
+            <td>Wire spacing verification, weld joint integrity, surface polish check</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Coach Interior Installations -->
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="COACH FITMENT"
+        title="Installed Appearance in Railway Coach Compartments"
+        subtitle="Designed for standard ceiling mounting brackets across railway passenger coach interiors."
+      />
+
+      <div class="installations-grid">
+        <div class="install-card card">
+          <ImageSlot imageKey="coach-mild-steel" alt="Powder-coated mild steel fan guard mounted in railway coach" aspectRatio="16 / 10" />
+          <div class="install-body">
+            <h4>Mild Steel Powder-Coated Fitment</h4>
+            <p>Uniform paint finish matching coach interior aesthetics with rigid safety wire spacing.</p>
+          </div>
+        </div>
+
+        <div class="install-card card">
+          <ImageSlot imageKey="coach-stainless" alt="Polished stainless steel fan guard fitted in railway coach compartment" aspectRatio="16 / 10" />
+          <div class="install-body">
+            <h4>Stainless Steel Polished Fitment</h4>
+            <p>Polished metallic finish offering long-term corrosion resistance in passenger compartments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-cta card">
+        <h3>Bulk Procurement for Coach Overhaul and Build Programmes</h3>
+        <p>We supply coach fan guards in scheduled production batches to railway equipment suppliers and OEMs.</p>
+        <a href="/contact" class="btn btn-primary">
+          Submit Fan Guard Enquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fan-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .fan-title {
+    font-size: var(--text-3xl);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .fan-lead {
+    font-size: var(--text-lg);
+    color: var(--body);
+    margin-bottom: 24px;
+  }
+
+  .compliance-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    background-color: var(--mist);
+  }
+
+  .compliance-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+    gap: 16px;
+  }
+
+  .compliance-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .c-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .c-val {
+    color: var(--body);
+    text-align: right;
+  }
+
+  .fan-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .media-duo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .duo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .caption {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .installations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .install-card {
+    overflow: hidden;
+  }
+
+  .install-body {
+    padding: 20px;
+  }
+
+  .install-body h4 {
+    margin-bottom: 6px;
+  }
+
+  .install-body p {
+    font-size: 14px;
+    color: var(--body);
+    margin-bottom: 0;
+  }
+
+  .bottom-cta {
+    padding: 32px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .bottom-cta h3 {
+    margin-bottom: 8px;
+  }
+
+  .bottom-cta p {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 960px) {
+    .fan-hero-grid,
+    .installations-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

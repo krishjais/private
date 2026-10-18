@@ -1,0 +1,103 @@
+---
+import testimonialsData from '../data/testimonials.json';
+
+interface TestimonialItem {
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  date: string;
+  permission: boolean;
+  sourceUrl?: string;
+}
+
+const validTestimonials = (testimonialsData as TestimonialItem[]).filter(
+  (t) => t && t.permission === true && t.name && t.quote && t.company
+);
+---
+
+{validTestimonials.length > 0 && (
+  <section class="section section-paper testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="eyebrow">CLIENT FEEDBACK</span>
+        <h2>Procurement and Engineering Endorsements</h2>
+        <span class="red-rule"></span>
+      </div>
+
+      <div class="testimonials-grid">
+        {validTestimonials.map((item) => (
+          <div class="testimonial-card card">
+            <blockquote class="testimonial-quote">
+              <p>"{item.quote}"</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-name">{item.name}</div>
+              <div class="author-role">{item.role}, {item.company}</div>
+              <div class="author-date">{item.date}</div>
+              {item.sourceUrl && (
+                <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" class="author-source">
+                  Verified reference
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .testimonials-section {
+    padding-top: var(--space-section);
+    padding-bottom: var(--space-section);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial-quote p {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .author-name {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .author-role {
+    font-size: 14px;
+    color: var(--body);
+  }
+
+  .author-date {
+    font-size: 12px;
+    color: var(--body);
+    margin-top: 4px;
+  }
+
+  .author-source {
+    font-size: 12px;
+    color: var(--blue);
+    text-decoration: underline;
+    margin-top: 6px;
+    display: inline-block;
+  }
+</style>

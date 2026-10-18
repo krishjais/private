@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Terms and Conditions of Commercial Quotation and Supply";
+const pageDescription = "Terms and conditions governing website use, technical quotations, and purchase orders for New Durga Wire Netting Work, Pithampur.";
+const lastUpdated = "Pre-launch draft";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Terms and Conditions', href: '/terms' }]} />
+
+  <section class="section section-paper">
+    <div class="container legal-container">
+      <SectionHeading
+        eyebrow="COMMERCIAL TERMS"
+        title="Terms and Conditions of Use and Supply"
+      />
+      <div class="legal-date">Last updated: {lastUpdated}</div>
+
+      <div class="legal-notice card">
+        <strong>Notice for site administrators:</strong> These commercial terms have been formulated for an Indian B2B engineering manufacturer. A qualified legal professional should review these terms prior to commercial launch.
+      </div>
+
+      <div class="legal-content">
+        <h3>1. Acceptance and Use of Website</h3>
+        <p>
+          By accessing and browsing this website operated by New Durga Wire Netting Work ("Manufacturer"), you agree to abide by these Terms and Conditions. This website is intended for business-to-business (B2B) procurement officers, railway equipment engineers, and commercial contractors.
+        </p>
+
+        <h3>2. Indicative Nature of Website Information</h3>
+        <p>
+          All component photographs, dimension diagrams, descriptions, and material summaries presented on this website are indicative and for technical illustration only. Official manufacturing supply commitments are governed strictly by agreed component drawings, purchase specifications, and formal written quotations.
+        </p>
+
+        <h3>3. Quotations, Pricing, and Purchase Orders</h3>
+        <p>
+          Submitting an enquiry or drawing via this website does not constitute a binding sales agreement. Written quotations provided by New Durga Wire Netting Work remain valid for the period specified in the quotation. Orders are legally confirmed only upon mutual acceptance of an official written Purchase Order (PO) specifying quantity, tolerance limits, surface finish, inspection agency, and payment terms.
+        </p>
+
+        <h3>4. Quality Standards, Inspection, and Testing</h3>
+        <p>
+          Test and inspection details are agreed per purchase order and drawing. Quality inspection reports, coil resistance measurements, contact continuity tests, and mill test certificates will be furnished against specific Purchase Order clauses where agreed in writing.
+        </p>
+
+        <h3>5. Customer Drawings and Intellectual Property</h3>
+        <p>
+          All intellectual property rights, proprietary designs, CAD drawings, blueprints, and samples furnished by the customer remain the exclusive property of the customer. New Durga Wire Netting Work treats customer technical drawings as confidential manufacturing data and does not disclose them to unauthorized third parties.
+        </p>
+
+        <h3>6. Limitation of Liability</h3>
+        <p>
+          In no event shall New Durga Wire Netting Work be liable for indirect, incidental, special, or consequential damages resulting from website downtime, minor clerical inaccuracies, or delays caused by force majeure, material shortages, or transport strikes. Maximum commercial liability is strictly limited to the invoice value of the specific goods supplied under a valid Purchase Order.
+        </p>
+
+        <h3>7. Governing Law and Jurisdiction</h3>
+        <p>
+          These Terms and Conditions and all commercial transactions arising from them shall be governed by and construed in accordance with the laws of the Republic of India. Any legal disputes or claims shall be subject to the exclusive jurisdiction of the competent courts in Dhar, Madhya Pradesh, India.
+        </p>
+
+        <h3>8. Contact Information</h3>
+        <address class="legal-address">
+          <strong>New Durga Wire Netting Work</strong><br />
+          Sector 59-A, Industrial Area,<br />
+          Pithampur, Dist. Dhar, Madhya Pradesh 454775, India.<br />
+          GSTIN: {siteConfig.gst}<br />
+          Email: <a href={`mailto:${siteConfig.emails[0]}`}>{siteConfig.emails[0]}</a><br />
+          Telephones: {siteConfig.phones.join(', ')}
+        </address>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-container {
+    max-width: 860px;
+  }
+
+  .legal-date {
+    font-size: 14px;
+    color: var(--body);
+    margin-top: -24px;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .legal-notice {
+    padding: 16px 20px;
+    background-color: var(--mist);
+    border-left: 3px solid var(--blue);
+    margin-bottom: 36px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .legal-content h3 {
+    font-size: 20px;
+    color: var(--ink);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .legal-content p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .legal-content strong {
+    color: var(--ink);
+  }
+
+  .legal-content a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .legal-address {
+    font-style: normal;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+    background-color: var(--mist);
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 16px;
+  }
+</style>

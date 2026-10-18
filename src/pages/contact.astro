@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { siteConfig, isPlaceholder } from '../config/site';
+
+const pageTitle = "Contact Works and Commercial RFQ";
+const pageDescription = "Contact New Durga Wire Netting Work in Pithampur, MP. Submit RFQs for railway signal relays, child parts, coach fan guards, and custom job work.";
+
+const showWhatsApp = !isPlaceholder(siteConfig.whatsappNumber) && siteConfig.whatsappNumber !== null;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Contact', href: '/contact' }]} />
+
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="COMMERCIAL AND ENGINEERING ENQUIRIES"
+        title="Contact Our Works Office in Pithampur"
+        subtitle="Reach out to discuss technical specifications, production schedules, component samples, or request quotation for tender submissions."
+      />
+
+      <div class="contact-split-grid">
+        <!-- Contact Info Side -->
+        <div class="contact-info-col">
+          <div class="info-block card">
+            <span class="eyebrow">FACTORY AND OFFICE ADDRESS</span>
+            <h3>Manufacturing Works</h3>
+            <address class="office-address">
+              <p>{siteConfig.address.full}</p>
+            </address>
+
+            <div class="contact-sub-items">
+              <div class="sub-item">
+                <span class="sub-label">GSTIN Registration:</span>
+                <span class="sub-val">{siteConfig.gst}</span>
+              </div>
+
+              <div class="sub-item">
+                <span class="sub-label">Operating Schedule:</span>
+                <span class="sub-val">{siteConfig.workingHours}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block card">
+            <span class="eyebrow">DIRECT CONTACT LINES</span>
+            <h3>Telephones and Email</h3>
+
+            <div class="contact-links-list">
+              <div class="comm-group">
+                <span class="comm-title">Telephone Numbers:</span>
+                {siteConfig.phones.map((phone) => (
+                  <div class="comm-line">
+                    <a href={`tel:${phone.replace(/\s+/g, '')}`} class="tel-link">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                        <path d="M 22 16.92 V 19.92 C 22 20.48 21.54 20.94 20.97 20.92 C 11.58 20.52 4 12.94 3.6 3.55 C 3.58 2.98 4.04 2.52 4.6 2.52 H 7.6 C 8.1 2.52 8.53 2.87 8.62 3.36 C 8.78 4.23 9.06 5.07 9.44 5.86 C 9.58 6.16 9.5 6.52 9.26 6.76 L 7.55 8.47 C 9.04 11.43 11.57 13.96 14.53 15.45 L 16.24 13.74 C 16.48 13.5 16.84 13.42 17.14 13.56 C 17.93 13.94 18.77 14.22 19.64 14.38 C 20.13 14.47 20.48 14.9 20.48 15.4 V 16.92 Z" />
+                      </svg>
+                      <span>{phone}</span>
+                    </a>
+                  </div>
+                ))}
+              </div>
+
+              <div class="comm-group">
+                <span class="comm-title">Email Addresses:</span>
+                {siteConfig.emails.map((email) => (
+                  <div class="comm-line">
+                    <a href={`mailto:${email}`} class="mail-link">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                        <path d="M 4 4 H 20 C 21.1 4 22 4.9 22 6 V 18 C 22 19.1 21.1 20 20 20 H 4 C 2.9 20 2 19.1 2 18 V 6 C 2 4.9 2.9 4 4 4 Z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                      <span>{email}</span>
+                    </a>
+                  </div>
+                ))}
+              </div>
+
+              {showWhatsApp && (
+                <div class="comm-group">
+                  <span class="comm-title">WhatsApp Communication:</span>
+                  <div class="comm-line">
+                    <a href={`https://wa.me/${siteConfig.whatsappNumber.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" class="wa-link">
+                      <span>Message via WhatsApp: {siteConfig.whatsappNumber}</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <!-- Drawing Submission Notice -->
+          <div class="info-block card drawing-notice-box">
+            <h4 class="notice-heading">Submitting Engineering Drawings</h4>
+            <p>
+              Please send engineering drawings (PDF, DWG, DXF, or STEP) and technical specification schedules directly to
+              <a href={`mailto:${siteConfig.emails[0]}`}>{siteConfig.emails[0]}</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="contact-form-col">
+          <QuoteForm isCompact={false} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OpenStreetMap Section -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="map-header">
+        <span class="eyebrow">LOCATION MAP</span>
+        <h2>Pithampur Industrial Area, Madhya Pradesh</h2>
+        <span class="red-rule"></span>
+        <p>{siteConfig.address.full}</p>
+      </div>
+
+      <div class="map-frame-wrapper card">
+        <iframe
+          title="OpenStreetMap location for Pithampur Industrial Area"
+          width="100%"
+          height="420"
+          style="border:0;"
+          loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=75.6400%2C22.5800%2C75.7200%2C22.6400&layer=mapnik&marker=22.6100%2C75.6800"
+        ></iframe>
+        <div class="map-caption">
+          <a
+            href="https://www.openstreetmap.org/?mlat=22.6100&mlon=75.6800#map=13/22.6100/75.6800"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-external-link"
+          >
+            View larger map on OpenStreetMap
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .info-block {
+    padding: 28px;
+    background-color: var(--mist);
+  }
+
+  .info-block h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .office-address {
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+
+  .contact-sub-items {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sub-item {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sub-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13px;
+  }
+
+  .sub-val {
+    color: var(--body);
+  }
+
+  .contact-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .comm-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .comm-title {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+  }
+
+  .tel-link,
+  .mail-link,
+  .wa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .tel-link:hover,
+  .mail-link:hover,
+  .wa-link:hover {
+    color: var(--red);
+  }
+
+  .drawing-notice-box {
+    border-left: 3px solid var(--red);
+    background-color: var(--paper);
+  }
+
+  .notice-heading {
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .drawing-notice-box p {
+    font-size: 14px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .drawing-notice-box a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .map-header {
+    margin-bottom: 32px;
+  }
+
+  .map-header h2 {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .map-frame-wrapper {
+    overflow: hidden;
+    background-color: var(--paper);
+  }
+
+  .map-caption {
+    padding: 12px 16px;
+    background-color: var(--paper);
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    text-align: right;
+  }
+
+  .map-external-link {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .contact-split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

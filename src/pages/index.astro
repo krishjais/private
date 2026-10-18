@@ -1,0 +1,684 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FactStrip from '../components/FactStrip.astro';
+import ProductCard from '../components/ProductCard.astro';
+import MachineCard from '../components/MachineCard.astro';
+import ProcessStrip from '../components/ProcessStrip.astro';
+import IndiaMap from '../components/IndiaMap.astro';
+import ClientGrid from '../components/ClientGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ImageSlot from '../components/ImageSlot.astro';
+import PlaceholderTag from '../components/PlaceholderTag.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Railway Signal Relay Assemblies and Coach Fan Guards";
+const pageDescription = "Precision manufacturer of railway signal relay assemblies, relay child parts, and coach fan guards in Pithampur, Madhya Pradesh. In-house machining, finishing, and testing.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-media-wrapper">
+      <img
+        src="/images/hero-factory-cnc.webp"
+        alt="Precision CNC lathe in operation on the workshop floor at New Durga Wire Netting Work in Pithampur"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        class="hero-media"
+      />
+      <!-- Flat dark overlay (no gradient, strict rgba ink overlay) -->
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-container">
+      <div class="hero-content corner-brackets">
+        <span class="hero-eyebrow">PITHAMPUR, MADHYA PRADESH : ESTABLISHED 2010</span>
+        <h1 class="hero-title">
+          Signal relay assemblies and coach fan guards, manufactured in Pithampur since 2010
+        </h1>
+        <div class="hero-red-rule"></div>
+        <p class="hero-subline">
+          In-house precision turning, press work, electroplating, powder coating, vacuum annealing, and electrical testing for signalling and rolling stock equipment.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/products" class="btn btn-primary">
+            View products
+          </a>
+          <a href="/contact" class="btn btn-secondary-light">
+            Send a drawing for quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fact Strip (4 verified metrics only) -->
+  <FactStrip />
+
+  <!-- Products Section (4 cards, major product highlight) -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="MANUFACTURED PRODUCTS"
+        title="Precision railway signalling and coach equipment"
+        subtitle="Four specialized production lines manufactured in Pithampur to engineering drawings and purchase specifications."
+      />
+
+      <div class="products-grid">
+        {siteConfig.products.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            summary={prod.summary}
+            slug={prod.slug}
+            imageKey={prod.imageKey}
+            isMajor={prod.isMajor}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Summary Section -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="about-summary-grid">
+        <div class="about-summary-content">
+          <SectionHeading
+            eyebrow="ABOUT THE MANUFACTURER"
+            title="Industrial component manufacturing since 2010"
+          />
+          <p>
+            New Durga Wire Netting Work operates from Sector 59-A in the Pithampur Industrial Area, Dist. Dhar, Madhya Pradesh. Established in 2010, the company manufactures railway signal relay assemblies, relay child parts, and welded radial wire coach fan guards.
+          </p>
+          <p>
+            All production processes, including turning, press stamping, electroplating, powder coating, vacuum annealing, and functional electrical testing, are conducted entirely in-house.
+          </p>
+          <div class="about-summary-action">
+            <a href="/about" class="btn btn-secondary">
+              Read company background
+            </a>
+          </div>
+        </div>
+
+        <div class="about-summary-media">
+          <ImageSlot imageKey="about-shopfloor" alt="Manufacturing shop floor at New Durga Wire Netting Work in Pithampur" aspectRatio="4 / 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manufacturing Capabilities Section (5 machine cards) -->
+  <section class="section section-mist">
+    <div class="container">
+      <div class="section-intro-row">
+        <SectionHeading
+          eyebrow="PRODUCTION INFRASTRUCTURE"
+          title="In-house machinery and tooling capabilities"
+          subtitle="Equipped for repeat production of turned child parts, pressed components, and milling."
+        />
+        <div class="intro-action">
+          <a href="/manufacturing" class="btn btn-secondary">
+            View machinery details
+          </a>
+        </div>
+      </div>
+
+      <div class="machines-grid">
+        {siteConfig.machines.map((m) => (
+          <MachineCard
+            name={m.name}
+            summary={m.summary}
+            partsMade={m.partsMade}
+            imageKey={m.imageKey}
+          />
+        ))}
+      </div>
+
+      <p class="machines-note">
+        Machine details and capacity are <a href="/contact">shared on request with a drawing or sample</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- How We Make It: 5-step numbered strip on ink background -->
+  <ProcessStrip />
+
+  <!-- Quality Section: 4 checkpoints + ISO 9001:2015 certificate card -->
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="QUALITY ASSURANCE"
+        title="Inspection checkpoints and compliance verification"
+        subtitle="Every component batch is verified against engineering drawings and functional requirements before dispatch."
+      />
+
+      <div class="quality-grid">
+        <div class="quality-table-col">
+          <table class="table-industrial">
+            <thead>
+              <tr>
+                <th style="width: 35%;">Inspection Stage</th>
+                <th>Checks Performed Against Drawing and Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              {siteConfig.qualityCheckpoints.map((qc) => (
+                <tr>
+                  <td><strong>{qc.stage}</strong></td>
+                  <td>{qc.checks}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div class="iso-cert-card card">
+            <a href={siteConfig.iso.certificateFile} class="iso-thumb-link" title="View ISO 9001:2015 Certificate">
+              <img
+                src={siteConfig.iso.certificatePreview}
+                alt="ISO 9001:2015 Certificate preview"
+                width="1193"
+                height="1600"
+                loading="lazy"
+                decoding="async"
+                class="iso-thumb-img"
+              />
+            </a>
+            <div class="iso-cert-details">
+              <span class="iso-badge">ISO 9001:2015</span>
+              <p class="iso-cert-text">
+                Quality management system certified to ISO 9001:2015 by Benchmark Veritas Quality Institute.
+              </p>
+              <span class="iso-validity">Valid until {siteConfig.iso.expiryDate}</span>
+              <div class="iso-links">
+                <a href={siteConfig.iso.certificateFile} class="iso-action-link">View certificate</a>
+                <span class="iso-sep">|</span>
+                <a href={siteConfig.iso.verifyUrl} target="_blank" rel="noopener noreferrer" class="iso-action-link">Verify on isobv.in</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="quality-actions">
+            <a href="/quality" class="btn btn-secondary-blue">
+              Review full quality testing regime
+            </a>
+          </div>
+        </div>
+
+        <div class="quality-images-col">
+          <div class="quality-img-stack">
+            <ImageSlot imageKey="quality-caliper" alt="Calibrated vernier caliper checking machined pin dimensions" aspectRatio="16 / 10" />
+            <ImageSlot imageKey="quality-coil-test" alt="Relay coil resistance and electrical continuity testing" aspectRatio="16 / 10" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Job Work Band -->
+  <section class="jobwork-band section-mist">
+    <div class="container">
+      <div class="jobwork-card card">
+        <div class="jobwork-content">
+          <span class="eyebrow">CUSTOM FABRICATION AND MACHINING</span>
+          <h2 class="jobwork-title">Send us your drawing or sample</h2>
+          <span class="red-rule"></span>
+          <p class="jobwork-desc">
+            We undertake customer-specific job work for railway and electrical equipment manufacturers. To quote your requirements accurately, please provide:
+          </p>
+
+          <ul class="jobwork-req-list">
+            {siteConfig.jobWork.enquiryRequirements.map((req) => (
+              <li class="req-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" class="req-icon">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>{req}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="jobwork-action">
+            <a href="/contact" class="btn btn-primary">
+              Submit drawing for quotation
+            </a>
+            <a href="/job-work" class="btn btn-secondary">
+              Review job work services
+            </a>
+          </div>
+        </div>
+
+        <div class="jobwork-media">
+          <ImageSlot imageKey="jobwork-drawing" alt="Engineering drawings and machined components on work table" aspectRatio="4 / 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section (7 logos, greyscale to colour on hover) -->
+  <section class="section section-paper">
+    <div class="container">
+      <ClientGrid heading="Companies we supply" />
+    </div>
+  </section>
+
+  <!-- Testimonials Section (renders only if data is present) -->
+  <Testimonials />
+
+  <!-- Regional Supply Reach (India SVG Map + Regions list) -->
+  <section class="section section-mist">
+    <div class="container">
+      <IndiaMap />
+    </div>
+  </section>
+
+  <!-- Contact & Enquiry Band -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="enquiry-split">
+        <div class="enquiry-info">
+          <span class="eyebrow">COMMERCIAL AND TECHNICAL ENQUIRIES</span>
+          <h2>Connect with our Pithampur facility</h2>
+          <span class="red-rule"></span>
+          <p>
+            Contact our engineering and sales desk directly for component inquiries, batch pricing, and technical discussions.
+          </p>
+
+          <div class="direct-contacts-block">
+            <div class="contact-card card">
+              <span class="contact-label">DIRECT PHONE NUMBERS</span>
+              {siteConfig.phones.map((phone) => (
+                <div class="contact-val">
+                  <a href={`tel:${phone.replace(/\s+/g, '')}`}>{phone}</a>
+                </div>
+              ))}
+            </div>
+
+            <div class="contact-card card">
+              <span class="contact-label">EMAIL ADDRESSES</span>
+              {siteConfig.emails.map((email) => (
+                <div class="contact-val">
+                  <a href={`mailto:${email}`}>{email}</a>
+                </div>
+              ))}
+            </div>
+
+            <div class="contact-card card">
+              <span class="contact-label">FACILITY LOCATION</span>
+              <div class="contact-val">{siteConfig.address.full}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="enquiry-form-wrapper">
+          <QuoteForm isCompact={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Styles */
+  .hero-section {
+    position: relative;
+    background-color: var(--ink);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+
+  .hero-media-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(20, 23, 31, 0.65); /* Flat dark overlay per HARD RULES */
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content {
+    max-width: 780px;
+    padding: 32px;
+    background-color: rgba(20, 23, 31, 0.82);
+    border: 1px solid rgba(217, 220, 227, 0.25);
+  }
+
+  .hero-eyebrow {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--line);
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    color: var(--paper);
+    font-size: var(--text-hero);
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+
+  .hero-red-rule {
+    width: 48px;
+    height: 3px;
+    background-color: var(--red);
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+
+  .hero-subline {
+    font-size: var(--text-lg);
+    color: var(--line);
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  /* About Summary Grid */
+  .about-summary-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .about-summary-content p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--body);
+    margin-bottom: 16px;
+  }
+
+  .about-summary-action {
+    margin-top: 24px;
+  }
+
+  /* Machines Grid */
+  .section-intro-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .machines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .machines-note {
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--body);
+    text-align: center;
+  }
+
+  .machines-note a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  /* Quality Section */
+  .quality-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .iso-cert-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--mist);
+    border: 1px solid var(--line);
+    padding: 16px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+  }
+
+  .iso-thumb-link {
+    flex-shrink: 0;
+    width: 64px;
+    display: block;
+    border: 1px solid var(--line);
+    background-color: var(--paper);
+    transition: transform var(--transition), border-color var(--transition);
+  }
+
+  .iso-thumb-link:hover {
+    transform: scale(1.03);
+    border-color: var(--blue);
+  }
+
+  .iso-thumb-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .iso-cert-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .iso-badge {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+  }
+
+  .iso-cert-text {
+    font-size: 14px;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .iso-validity {
+    font-size: 13px;
+    color: var(--body);
+  }
+
+  .iso-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+    font-size: 13px;
+  }
+
+  .iso-action-link {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .iso-action-link:hover {
+    color: var(--red);
+  }
+
+  .iso-sep {
+    color: var(--line);
+  }
+
+  .quality-img-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Job Work Band */
+  .jobwork-card {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    padding: 40px;
+    gap: 40px;
+    align-items: center;
+    background-color: var(--paper);
+  }
+
+  .jobwork-title {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .jobwork-desc {
+    font-size: 16px;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+
+  .jobwork-req-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .req-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .req-icon {
+    color: var(--red);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .jobwork-action {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Enquiry Split */
+  .enquiry-split {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .direct-contacts-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .contact-card {
+    padding: 18px 20px;
+  }
+
+  .contact-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .contact-val {
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .contact-val a {
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .contact-val a:hover {
+    color: var(--red);
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .machines-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .about-summary-grid,
+    .quality-grid,
+    .jobwork-card,
+    .enquiry-split {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .products-grid,
+    .machines-grid {
+      grid-template-columns: 1fr;
+    }
+    .jobwork-card {
+      padding: 24px;
+    }
+    .hero-content {
+      padding: 24px;
+    }
+  }
+</style>

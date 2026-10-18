@@ -1,0 +1,317 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  isCompact?: boolean;
+}
+
+const { isCompact = false } = Astro.props;
+const web3FormsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || siteConfig.web3formsKey;
+---
+
+<div class={`quote-form-container card ${isCompact ? 'form-compact' : ''}`}>
+  <div class="form-header">
+    <h3 class="form-title">Request a Component Quotation</h3>
+    <p class="form-notice">
+      Submit your component requirements. For technical drawings, please email or WhatsApp files directly.
+    </p>
+  </div>
+
+  <form id="contact-form" class="quote-form" novalidate>
+    <!-- Web3Forms Access Key -->
+    <input type="hidden" name="access_key" value={web3FormsKey} />
+    <input type="hidden" name="subject" value="New Component RFQ - New Durga Wire Netting Work" />
+    <input type="hidden" name="from_name" value="New Durga Wire Website" />
+
+    <!-- Spam prevention honeypot -->
+    <input type="checkbox" name="botcheck" class="honeypot-field" tabindex="-1" autocomplete="off" aria-label="Leave this field empty" />
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="form-name" class="form-label">Full Name *</label>
+        <input type="text" id="form-name" name="name" required class="form-input" placeholder="e.g. Rajesh Kumar" />
+        <span class="field-error" id="error-name">Please enter your name.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="form-company" class="form-label">Company / Organization *</label>
+        <input type="text" id="form-company" name="company" required class="form-input" placeholder="e.g. Signal OEM Pvt Ltd" />
+        <span class="field-error" id="error-company">Please enter your company name.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="form-phone" class="form-label">Phone Number *</label>
+        <input type="tel" id="form-phone" name="phone" required class="form-input" placeholder="Enter your contact number" />
+        <span class="field-error" id="error-phone">Please enter a valid contact phone number.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="form-email" class="form-label">Business Email *</label>
+        <input type="email" id="form-email" name="email" required class="form-input" placeholder="e.g. procurement@company.com" />
+        <span class="field-error" id="error-email">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="form-requirement" class="form-label">Component Requirement *</label>
+        <select id="form-requirement" name="requirement" class="form-select" required>
+          <option value="">Select component category</option>
+          <option value="Railway Signal Relay Assembly">Railway Signal Relay Assembly</option>
+          <option value="Relay Child Parts">Relay Child Parts (pins, bushes, washers, brackets, coils)</option>
+          <option value="Coach Fan Guards (Mild Steel)">Coach Fan Guards (Mild Steel, Powder Coated)</option>
+          <option value="Coach Fan Guards (Stainless Steel)">Coach Fan Guards (Stainless Steel, Polished)</option>
+          <option value="Precision Job Work">Precision Job Work (CNC turning, press work, VMC)</option>
+          <option value="Other Requirement">Other Requirement</option>
+        </select>
+        <span class="field-error" id="error-requirement">Please select your requirement category.</span>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="form-message" class="form-label">Requirements and Quantities *</label>
+        <textarea
+          id="form-message"
+          name="message"
+          required
+          class="form-textarea"
+          placeholder="State part description, material grade, monthly or batch quantity, and delivery timeline."
+        ></textarea>
+        <span class="field-error" id="error-message">Please provide details regarding your requirement.</span>
+      </div>
+    </div>
+
+    <!-- Drawing attachment advisory -->
+    <div class="drawings-advisory">
+      <div class="advisory-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+          <path d="M 14 2 L 18 6 L 18 22 L 2 22 L 2 2 Z" />
+          <path d="M 14 2 L 14 6 L 18 6" />
+          <path d="M 6 12 L 14 12 M 6 16 L 14 16" />
+        </svg>
+      </div>
+      <div class="advisory-text">
+        <strong>Sharing engineering drawings:</strong>
+        Please email PDF or CAD drawings directly to
+        <a href={`mailto:${siteConfig.emails[0]}`}>{siteConfig.emails[0]}</a>
+        or send via WhatsApp.
+      </div>
+    </div>
+
+    <!-- Status Messages -->
+    <div id="form-status-success" class="status-box status-success" style="display: none;">
+      <strong>Thank you.</strong> Your enquiry has been received. Our engineering team will review your specifications and contact you shortly.
+    </div>
+
+    <div id="form-status-error" class="status-box status-error" style="display: none;">
+      <strong>Submission error:</strong> Unable to send your message. Please reach us directly at {siteConfig.phones[0]} or {siteConfig.emails[0]}.
+    </div>
+
+    <div class="form-submit-row">
+      <button type="submit" id="submit-btn" class="btn btn-primary">
+        <span>Send Enquiry for Quote</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successBox = document.getElementById('form-status-success');
+  const errorBox = document.getElementById('form-status-error');
+  const submitBtn = document.getElementById('submit-btn');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Reset errors
+      const errorElements = form.querySelectorAll('.field-error');
+      errorElements.forEach((el) => {
+        (el as HTMLElement).style.display = 'none';
+      });
+      if (successBox) successBox.style.display = 'none';
+      if (errorBox) errorBox.style.display = 'none';
+
+      const nameInput = form.querySelector('#form-name') as HTMLInputElement;
+      const companyInput = form.querySelector('#form-company') as HTMLInputElement;
+      const phoneInput = form.querySelector('#form-phone') as HTMLInputElement;
+      const emailInput = form.querySelector('#form-email') as HTMLInputElement;
+      const reqInput = form.querySelector('#form-requirement') as HTMLSelectElement;
+      const msgInput = form.querySelector('#form-message') as HTMLTextAreaElement;
+
+      if (!nameInput.value.trim()) {
+        const err = form.querySelector('#error-name') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+      if (!companyInput.value.trim()) {
+        const err = form.querySelector('#error-company') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+      if (!phoneInput.value.trim()) {
+        const err = form.querySelector('#error-phone') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        const err = form.querySelector('#error-email') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+      if (!reqInput.value) {
+        const err = form.querySelector('#error-requirement') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+      if (!msgInput.value.trim()) {
+        const err = form.querySelector('#error-message') as HTMLElement;
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      if (submitBtn) {
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.textContent = 'Submitting enquiry...';
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          form.reset();
+          if (successBox) successBox.style.display = 'block';
+        } else {
+          if (errorBox) errorBox.style.display = 'block';
+        }
+      } catch (err) {
+        if (errorBox) errorBox.style.display = 'block';
+      } finally {
+        if (submitBtn) {
+          submitBtn.removeAttribute('disabled');
+          submitBtn.textContent = 'Send Enquiry for Quote';
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  .quote-form-container {
+    padding: 32px;
+    background-color: var(--paper);
+  }
+
+  .form-compact {
+    padding: 24px;
+  }
+
+  .form-header {
+    margin-bottom: 24px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .form-notice {
+    font-size: 15px;
+    color: var(--body);
+    margin-bottom: 0;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .field-error {
+    display: none;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .drawings-advisory {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: var(--mist);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+
+  .advisory-icon {
+    color: var(--blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .advisory-text {
+    font-size: 14px;
+    color: var(--body);
+    line-height: 1.5;
+  }
+
+  .advisory-text strong {
+    color: var(--ink);
+  }
+
+  .advisory-text a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .status-box {
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .status-success {
+    background-color: #ECFDF5;
+    border: 1px solid #10B981;
+    color: #065F46;
+  }
+
+  .status-error {
+    background-color: #FEF2F2;
+    border: 1px solid #EF4444;
+    color: #991B1B;
+  }
+
+  .form-submit-row {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .full-width {
+      grid-column: 1;
+    }
+  }
+</style>

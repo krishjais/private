@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ImageSlot from '../components/ImageSlot.astro';
+
+const pageTitle = "Manufacturing Process and Workflow";
+const pageDescription = "Six-step manufacturing process at New Durga Wire Netting Work: raw material inspection, machining, electroplating, powder coating and vacuum annealing, testing, and dispatch.";
+
+const processSteps = [
+  {
+    step: 1,
+    title: "Raw Material Inward Inspection",
+    station: "Raw Material Store and Inward Inspection Bay",
+    imageKey: "process-raw-material",
+    description: "Inward receipt and inspection of wire coils, sheet metal, stainless steel, and brass rounds.",
+    checked: "Material grade against mill test certificates, wire diameter, sheet thickness, and surface condition.",
+    output: "Verified and accepted raw material lots transferred to machine shop bays."
+  },
+  {
+    step: 2,
+    title: "Machining and Press Stamping",
+    station: "CNC Lathes, Traub Automatic Lathes, VMC, DRO, and 10 to 75 Ton Presses",
+    imageKey: "machine-cnc",
+    description: "Turning of armature pins and spacer bushes, blanking and forming of brackets and washers, and milling.",
+    checked: "Component dimensions, thread pitch, hole concentricity, bend radii, and deburring against drawings.",
+    output: "Machined and stamped component blanks ready for surface finishing."
+  },
+  {
+    step: 3,
+    title: "In-House Electroplating",
+    station: "Electroplating Finishing Bays",
+    imageKey: "process-electroplating",
+    description: "In-house electroplating facility applying protective surface finish to relay components. Specifically, relay mounting brackets and metal child parts receive a corrosion-resistant gold-yellow electroplated finish.",
+    checked: "Plating adhesion, coating thickness, and uniform gold-yellow surface coloration.",
+    output: "Corrosion-resistant relay brackets and plated child parts."
+  },
+  {
+    step: 4,
+    title: "Powder Coating and Vacuum Annealing",
+    station: "Electrostatic Powder Coating Booth and Vacuum Furnace Bay",
+    imageKey: "process-powder-coating",
+    description: "Mild steel coach fan guards receive an electrostatic powder coating for a durable, uniform painted finish. Concurrently, electromagnetic components undergo stress relief heat treatment in our in-house vacuum annealing furnace in a controlled vacuum environment.",
+    checked: "Powder coating film thickness and adhesion on fan guards; vacuum level and thermal cycle logs for annealed magnetic cores.",
+    output: "Durable painted fan guard frames and stress-relieved magnetic components."
+  },
+  {
+    step: 5,
+    title: "Assembly and Electrical Testing",
+    station: "Clean Relay Assembly Benches and Electrical Test Stations",
+    imageKey: "process-assembly-testing",
+    description: "Precision mechanical assembly of coils, armatures, contacts, and brackets into complete relay assemblies. Each unit undergoes functional testing.",
+    checked: "Coil resistance measurement (ohms), contact continuity under closed circuits, operate and release mechanical action.",
+    output: "Fully functional, verified railway signal relay assemblies and assembled coach fan guards."
+  },
+  {
+    step: 6,
+    title: "Protective Packing and Dispatch",
+    station: "Packing Station and Final Dispatch Area",
+    imageKey: "process-packing",
+    description: "Foam packing of delicate relay assemblies into individual foam slots and batch trays to prevent transit damage. Boxing and labelling of child parts and coach fan guards.",
+    checked: "Consignment count against purchase order, visual inspection, foam packing security, and transit carton labelling.",
+    output: "Securely foam-packed consignments ready for transport to railway regions."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Process', href: '/process' }]} />
+
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="PRODUCTION PROTOCOL"
+        title="Six-Stage In-House Manufacturing Process"
+        subtitle="Every stage of production is performed inside our Pithampur works. Components progress through defined verification gates before advancing to subsequent stations."
+      />
+
+      <div class="timeline-container">
+        {processSteps.map((stepItem) => (
+          <div class="timeline-step">
+            <div class="timeline-marker">
+              <span class="marker-num">0{stepItem.step}</span>
+              <div class="marker-line"></div>
+            </div>
+
+            <div class="timeline-card card">
+              <div class="timeline-grid">
+                <div class="timeline-content">
+                  <span class="step-badge">Stage 0{stepItem.step}</span>
+                  <h3 class="step-heading">{stepItem.title}</h3>
+                  <p class="step-summary">{stepItem.description}</p>
+
+                  <div class="step-meta">
+                    <div class="meta-row">
+                      <span class="meta-label">Station / Bays:</span>
+                      <span class="meta-val">{stepItem.station}</span>
+                    </div>
+
+                    <div class="meta-row">
+                      <span class="meta-label">Inspection checks:</span>
+                      <span class="meta-val">{stepItem.checked}</span>
+                    </div>
+
+                    <div class="meta-row">
+                      <span class="meta-label">Stage output:</span>
+                      <span class="meta-val">{stepItem.output}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-media">
+                  <ImageSlot imageKey={stepItem.imageKey} alt={stepItem.title} aspectRatio="16 / 10" />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="process-bottom-banner card">
+        <h3>Consistent Quality Across Every Production Batch</h3>
+        <p>
+          Our integrated machining, finishing, and testing under one roof ensures end-to-end trace control for railway signalling contractors.
+        </p>
+        <div class="banner-buttons">
+          <a href="/quality" class="btn btn-secondary-blue">
+            Review Quality Checkpoints
+          </a>
+          <a href="/contact" class="btn btn-primary">
+            Request Manufacturing Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  .timeline-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .marker-num {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--red);
+    background-color: var(--mist);
+    border: 2px solid var(--line);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    line-height: 1;
+  }
+
+  .marker-line {
+    flex-grow: 1;
+    width: 2px;
+    background-color: var(--line);
+    margin-top: 12px;
+  }
+
+  .timeline-card {
+    padding: 32px;
+    overflow: hidden;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .step-badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .step-heading {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .step-summary {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .step-meta {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .meta-row {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .meta-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13px;
+  }
+
+  .meta-val {
+    color: var(--body);
+  }
+
+  .process-bottom-banner {
+    padding: 36px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .process-bottom-banner h3 {
+    margin-bottom: 8px;
+  }
+
+  .process-bottom-banner p {
+    margin-bottom: 24px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .timeline-step {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .timeline-marker {
+      display: none;
+    }
+    .timeline-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

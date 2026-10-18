@@ -1,0 +1,125 @@
+---
+import '../styles/reset.css';
+import '../styles/variables.css';
+import '../styles/global.css';
+
+import { siteConfig } from '../config/site';
+import SkipLink from '../components/SkipLink.astro';
+import Header from '../components/Header.astro';
+import MobileNav from '../components/MobileNav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  canonicalPath = Astro.url.pathname
+} = Astro.props;
+
+const siteUrl = siteConfig.siteUrl.replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const ogImageUrl = `${siteUrl}/og-image.png`;
+
+const fullTitle = `${title} | New Durga Wire Netting Work`;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": siteConfig.name,
+      "url": siteUrl,
+      "logo": `${siteUrl}/icon-512.png`,
+      "foundingDate": "2010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.line1,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.pincode,
+        "addressCountry": "IN"
+      },
+      "telephone": siteConfig.phones,
+      "email": siteConfig.emails,
+      "taxID": siteConfig.gst,
+      "description": "Precision manufacturer of railway signal relay assemblies, relay child parts, and coach fan guards in Pithampur, Madhya Pradesh. Quality management system certified to ISO 9001:2015 by Benchmark Veritas Quality Institute."
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#localbusiness`,
+      "name": siteConfig.name,
+      "image": `${siteUrl}/og-image.png`,
+      "url": siteUrl,
+      "telephone": siteConfig.phones[0],
+      "email": siteConfig.emails[0],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.line1,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.pincode,
+        "addressCountry": "IN"
+      }
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph Meta -->
+    <meta property="og:site_name" content="New Durga Wire Netting Work" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Favicon and App Manifest -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#14171F" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </head>
+  <body>
+    <SkipLink />
+    <Header />
+    <MobileNav />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>

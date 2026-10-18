@@ -1,0 +1,20 @@
+---
+import { isPlaceholder } from '../config/site';
+
+interface Props {
+  value: string | null | undefined;
+  fallback?: string;
+}
+
+const { value, fallback = 'Not specified' } = Astro.props;
+const displayValue = value || fallback;
+const isPending = isPlaceholder(displayValue);
+---
+
+{isPending ? (
+  <span class="placeholder-badge" title="Pending confirmation before production launch">
+    {displayValue}
+  </span>
+) : (
+  <span>{displayValue}</span>
+)}

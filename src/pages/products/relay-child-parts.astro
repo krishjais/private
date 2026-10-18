@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ImageSlot from '../../components/ImageSlot.astro';
+
+const pageTitle = "Railway Signal Relay Child Parts";
+const pageDescription = "Precision turned and pressed relay child parts: armature pins, spacer bushes, flat washers, mounting brackets, and coils manufactured in Pithampur.";
+
+const childParts = [
+  {
+    name: "Armature Pin",
+    function: "Threaded pivot pin providing smooth mechanical pivoting action for the relay armature.",
+    machine: "CNC turning and Traub automatic lathe",
+    inspection: "Threads, shank diameter, and concentricity measured against engineering drawing.",
+    material: "Precision steel / brass"
+  },
+  {
+    name: "Spacer Bush",
+    function: "Maintains exact calibrated clearance between structural relay frame plates and contact banks.",
+    machine: "Traub automatic lathe and CNC turning",
+    inspection: "Internal diameter, outer diameter, length, and perpendicularity.",
+    material: "Mild steel / brass"
+  },
+  {
+    name: "Flat Washer",
+    function: "Distributes clamping load uniformly across structural fasteners to protect mounting faces.",
+    machine: "Press machines (10 to 75 Ton)",
+    inspection: "Inner and outer diameter, thickness, and deburring inspection.",
+    material: "Sheet steel"
+  },
+  {
+    name: "Mounting Bracket",
+    function: "Rigid metal mounting frame supporting the entire relay mechanism with gold-yellow finish.",
+    machine: "Press blanking, forming, and in-house electroplating",
+    inspection: "Hole centres, bend angles, and electroplated finish thickness.",
+    material: "Formed steel with gold-yellow plating"
+  },
+  {
+    name: "Electromagnetic Coil",
+    function: "Electromagnetic actuation component generating the magnetic field to operate relay contacts.",
+    machine: "Precision coil winding, vacuum annealing furnace stress relief, and resistance testing",
+    inspection: "Coil resistance (ohms), insulation resistance, and dimension check.",
+    material: "Enameled copper wire and core"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs
+    crumbs={[
+      { name: 'Products', href: '/products' },
+      { name: 'Relay Child Parts', href: '/products/relay-child-parts' }
+    ]}
+  />
+
+  <section class="section section-paper">
+    <div class="container">
+      <div class="parts-hero-grid">
+        <div class="parts-hero-info">
+          <span class="eyebrow">PRECISION CHILD COMPONENTS</span>
+          <h1 class="parts-title">Railway Signal Relay Child Parts</h1>
+          <span class="red-rule"></span>
+          <p class="parts-lead">
+            Machined pins, turned spacer bushes, stamped flat washers, electroplated mounting brackets, and wound coils supplied as individual child parts for railway signal relay maintenance and OEM assemblies.
+          </p>
+
+          <div class="compliance-box card">
+            <div class="compliance-item">
+              <span class="c-label">APPLICABLE REQUIREMENT:</span>
+              <span class="c-val">Purchaser-approved drawing and applicable RDSO or Indian Railway specification</span>
+            </div>
+            <div class="compliance-item">
+              <span class="c-label">QUALITY MANAGEMENT:</span>
+              <span class="c-val">Manufactured under a quality management system certified to ISO 9001:2015 (<a href="/quality">review certificate</a>)</span>
+            </div>
+            <div class="compliance-item">
+              <span class="c-label">INSPECTION:</span>
+              <span class="c-val">Dimensions, threads, and burrs checked against drawings</span>
+            </div>
+            <div class="compliance-item">
+              <span class="c-label">PRODUCTION:</span>
+              <span class="c-val">Manufactured in-house using CNC, Traub automatic lathe, and power presses</span>
+            </div>
+          </div>
+
+          <div class="parts-actions">
+            <a href="/contact" class="btn btn-primary">
+              Enquire for Child Parts
+            </a>
+            <a href="/manufacturing" class="btn btn-secondary">
+              View Machinery
+            </a>
+          </div>
+        </div>
+
+        <div class="parts-hero-media">
+          <ImageSlot imageKey="relay-child-parts-flatlay" alt="Flat lay of precision relay child parts including armature pin, bush, washer, bracket and coil" aspectRatio="4 / 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Child Parts Table -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="DETAILED BREAKDOWN"
+        title="Manufactured Child Parts and Manufacturing Stations"
+        subtitle="All five child parts are produced, finished, and inspected within our Pithampur facility."
+      />
+
+      <div class="parts-table-wrap">
+        <table class="table-industrial">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Component</th>
+              <th style="width: 30%;">Engineering Function</th>
+              <th style="width: 25%;">In-House Machine / Process</th>
+              <th>Inspection Checks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {childParts.map((part) => (
+              <tr>
+                <td><strong>{part.name}</strong></td>
+                <td>{part.function}</td>
+                <td>{part.machine}</td>
+                <td>{part.inspection}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Job Work Availability Strip -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="job-banner card">
+        <h3>Custom Pin, Bush, or Bracket Requirements?</h3>
+        <p>
+          We undertake custom child part manufacturing for railway contractors and electronics manufacturers. Supply your drawing or component sample for batch quotation.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+          Submit Drawing for Child Parts
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .parts-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .parts-title {
+    font-size: var(--text-3xl);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .parts-lead {
+    font-size: var(--text-lg);
+    color: var(--body);
+    margin-bottom: 24px;
+  }
+
+  .compliance-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    background-color: var(--mist);
+  }
+
+  .compliance-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+  }
+
+  .c-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .c-val {
+    color: var(--ink);
+  }
+
+  .parts-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .parts-table-wrap {
+    overflow-x: auto;
+  }
+
+  .job-banner {
+    padding: 36px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .job-banner h3 {
+    margin-bottom: 8px;
+  }
+
+  .job-banner p {
+    margin-bottom: 24px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 960px) {
+    .parts-hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

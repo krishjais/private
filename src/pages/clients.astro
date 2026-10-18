@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ClientGrid from '../components/ClientGrid.astro';
+import IndiaMap from '../components/IndiaMap.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Clients and Railway Supply Regions";
+const pageDescription = "Companies supplied by New Durga Wire Netting Work, including CG Power, Rotomotive, Lucas TVS, and railway regions served across India.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'Clients', href: '/clients' }]} />
+
+  <!-- Clients Grid Section -->
+  <section class="section section-paper">
+    <div class="container">
+      <ClientGrid heading="Companies We Supply" showSubtitle={true} />
+
+      {siteConfig.flags.SHOW_REFERENCES_LINE && (
+        <div class="references-note">
+          <p>References available on request.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Testimonials Component (renders nothing if empty) -->
+  <Testimonials />
+
+  <!-- Regions We Supply To -->
+  <section class="section section-mist">
+    <div class="container">
+      <IndiaMap />
+    </div>
+  </section>
+
+  <!-- Direct Engagement CTA -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="client-cta card">
+        <h3>Supplying High-Reliability Components for Signalling Assemblies</h3>
+        <p>
+          We work closely with procurement officers and vendor development engineers to meet delivery schedules and technical standards.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+          Contact Vendor Development Desk
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .references-note {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background-color: var(--mist);
+    border-left: 3px solid var(--blue);
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .client-cta {
+    padding: 36px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .client-cta h3 {
+    margin-bottom: 8px;
+  }
+
+  .client-cta p {
+    margin-bottom: 24px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const pageTitle = "Page Not Found (404)";
+const pageDescription = "The requested page could not be found. Please return to the homepage, product catalog, or contact our team.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="section section-paper error-section">
+    <div class="container error-container">
+      <span class="eyebrow">ERROR 404</span>
+      <h1 class="error-code">404</h1>
+      <span class="red-rule"></span>
+      <h2>Requested Page Not Found</h2>
+      <p class="error-desc">
+        The requested URL could not be located on this server. The page may have been relocated or renamed.
+      </p>
+
+      <div class="error-actions">
+        <a href="/" class="btn btn-primary">
+          Return to Homepage
+        </a>
+        <a href="/products" class="btn btn-secondary">
+          View Products Catalog
+        </a>
+        <a href="/contact" class="btn btn-secondary-blue">
+          Contact Support Desk
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .error-container {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .error-code {
+    font-size: clamp(64px, 8vw, 96px);
+    color: var(--ink);
+    line-height: 1;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .error-container .red-rule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .error-desc {
+    font-size: 16px;
+    color: var(--body);
+    margin-bottom: 32px;
+  }
+
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+</style>

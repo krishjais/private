@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ImageSlot from '../components/ImageSlot.astro';
+import FactStrip from '../components/FactStrip.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "About New Durga Wire Netting Work";
+const pageDescription = "Precision manufacturer of railway signal relay assemblies, relay child parts, and coach fan guards in Pithampur, Madhya Pradesh, established 2010.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs crumbs={[{ name: 'About', href: '/about' }]} />
+
+  <section class="section section-paper">
+    <div class="container">
+      <div class="about-hero-grid">
+        <div class="about-hero-info">
+          <span class="eyebrow">COMPANY BACKGROUND</span>
+          <h1 class="about-title">Precision Manufacturing in Pithampur Since 2010</h1>
+          <span class="red-rule"></span>
+          <p class="about-lead">
+            New Durga Wire Netting Work was established in 2010 as a dedicated precision manufacturing unit in Pithampur, Madhya Pradesh. The company manufactures components for railway signalling systems and rolling stock coach equipment.
+          </p>
+
+          <p>
+            Operating across four primary product lines, we specialize in complete Railway Signal Relay Assemblies, turned and pressed Relay Child Parts, and radial wire Coach Fan Guards in mild steel and stainless steel.
+          </p>
+
+          <p>
+            Our manufacturing and testing operations follow a quality management system certified to ISO 9001:2015 by Benchmark Veritas Quality Institute.
+          </p>
+
+          {siteConfig.flags.SHOW_ANNUAL_SALES && (
+            <div class="annual-sales-box card">
+              <span class="sales-label">FINANCIAL SCALE</span>
+              <p class="sales-text">{siteConfig.annualSalesText}</p>
+            </div>
+          )}
+        </div>
+
+        <div class="about-hero-media">
+          <ImageSlot imageKey="about-shopfloor" alt="Manufacturing shop floor at New Durga Wire Netting Work in Pithampur" aspectRatio="4 / 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fact Strip -->
+  <FactStrip />
+
+  <!-- Manufacturing Scope and In-House Integration -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="FACILITY SCOPE"
+        title="Integrated In-House Infrastructure"
+        subtitle="We maintain comprehensive control over quality and delivery schedules by housing machining, press work, finishing, and testing under one roof."
+      />
+
+      <div class="facility-grid">
+        <div class="fac-card card">
+          <h3>Machining Bays</h3>
+          <p>
+            In-house CNC turning and fabrication for pins, bushes, and shafts. Traub automatic lathes for repeat turning. Vertical Machining Centre (VMC) for milling, drilling, and slotting. DRO drilling machine with digital position readout.
+          </p>
+        </div>
+
+        <div class="fac-card card">
+          <h3>Press Stamping Shop</h3>
+          <p>
+            Press machines ranging from 10 to 75 ton capacity for blanking, punching, and forming of pressed components including brackets and washers.
+          </p>
+        </div>
+
+        <div class="fac-card card">
+          <h3>In-House Finishing Bays</h3>
+          <p>
+            Electroplating plant providing protective gold-yellow finish on relay mounting brackets and structural parts. Electrostatic powder coating line for durable painted finishes on mild steel fan guards. Vacuum annealing furnace for stress relief heat treatment.
+          </p>
+        </div>
+
+        <div class="fac-card card">
+          <h3>Testing and Assembly Benches</h3>
+          <p>
+            Clean assembly area with calibrated electrical test benches. Relay assemblies are tested for coil resistance, contact continuity, and operate and release characteristics before foam packing and dispatch.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location and Plant Address -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="plant-location-card card">
+        <div class="plant-details">
+          <span class="eyebrow">WORKS LOCATION</span>
+          <h2>Works and Registered Office</h2>
+          <span class="red-rule"></span>
+          <p class="plant-address">{siteConfig.address.full}</p>
+          <div class="plant-contacts">
+            <div><strong>GSTIN:</strong> {siteConfig.gst}</div>
+            <div><strong>Primary Phone:</strong> {siteConfig.phones[0]}</div>
+            <div><strong>Office Email:</strong> {siteConfig.emails[0]}</div>
+          </div>
+          <div class="plant-action">
+            <a href="/contact" class="btn btn-primary">
+              Contact Works Office
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .about-title {
+    font-size: var(--text-3xl);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .about-lead {
+    font-size: var(--text-lg);
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .about-hero-info p {
+    font-size: 16px;
+    color: var(--body);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .annual-sales-box {
+    padding: 18px 20px;
+    background-color: var(--mist);
+    border-left: 3px solid var(--red);
+    margin-top: 24px;
+  }
+
+  .sales-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  .sales-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .facility-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .fac-card {
+    padding: 28px;
+  }
+
+  .fac-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .fac-card p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .plant-location-card {
+    padding: 40px;
+    background-color: var(--mist);
+  }
+
+  .plant-address {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .plant-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 900px) {
+    .about-hero-grid,
+    .facility-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

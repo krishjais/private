@@ -1,0 +1,81 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<div class="fact-strip-wrap">
+  <div class="container">
+    <div class="fact-strip">
+      <div class="fact-cell">
+        <span class="fact-label">ESTABLISHED</span>
+        <span class="fact-value">{siteConfig.established}</span>
+      </div>
+
+      <div class="fact-cell">
+        <span class="fact-label">PRODUCT RANGE</span>
+        <span class="fact-value">4 Product Lines</span>
+      </div>
+
+      <div class="fact-cell">
+        <span class="fact-label">Quality management system certified</span>
+        <span class="fact-value">ISO 9001:2015</span>
+      </div>
+
+      <div class="fact-cell">
+        <span class="fact-label">COMPLIANCE</span>
+        <span class="fact-value">GST Registered</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .fact-strip-wrap {
+    background-color: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+
+  .fact-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .fact-cell {
+    border-left: 2px solid var(--red);
+    padding-left: 16px;
+  }
+
+  .fact-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  .fact-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 1.4vw, 22px);
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  @media (max-width: 768px) {
+    .fact-strip {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fact-strip {
+      grid-template-columns: 1fr;
+      row-gap: 20px;
+    }
+  }
+</style>

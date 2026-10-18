@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ImageSlot from '../../components/ImageSlot.astro';
+
+const pageTitle = "Railway Signal Relay Assembly";
+const pageDescription = "Major manufactured product: electromagnetic signal relay assemblies for railway signalling circuits. Tested before dispatch and foam packed.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs
+    crumbs={[
+      { name: 'Products', href: '/products' },
+      { name: 'Railway Signal Relay Assembly', href: '/products/railway-signal-relay-assembly' }
+    ]}
+  />
+
+  <section class="section section-paper">
+    <div class="container">
+      <div class="product-hero-grid">
+        <div class="product-hero-info">
+          <span class="eyebrow">MAJOR MANUFACTURED PRODUCT</span>
+          <h1 class="product-title">Railway Signal Relay Assembly</h1>
+          <span class="red-rule"></span>
+          <p class="product-lead">
+            Electromagnetic relays switch electrical contacts in railway signalling circuits to control visual signals, switch machine points, and track circuit detection blocks.
+          </p>
+
+          <div class="key-facts-box card">
+            <div class="fact-row">
+              <span class="fact-label">Manufacturing Status:</span>
+              <span class="fact-val">Major production line manufactured at Pithampur</span>
+            </div>
+            <div class="fact-row">
+              <span class="fact-label">Testing Protocol:</span>
+              <span class="fact-val">Functional testing before packing and dispatch</span>
+            </div>
+            <div class="fact-row">
+              <span class="fact-label">Packaging Standard:</span>
+              <span class="fact-val">Custom protective foam packing for shock-free transit</span>
+            </div>
+            <div class="fact-row">
+              <span class="fact-label">Applicable Requirement:</span>
+              <span class="fact-val">Purchaser-approved drawing and applicable RDSO or Indian Railway specification</span>
+            </div>
+          </div>
+
+          <div class="product-cta-row">
+            <a href="/contact" class="btn btn-primary">
+              Request Relay Quotation
+            </a>
+            <a href="/quality" class="btn btn-secondary">
+              Review Test Checkpoints
+            </a>
+          </div>
+        </div>
+
+        <div class="product-hero-media">
+          <ImageSlot imageKey="product-relay-single" alt="Single railway signal relay assembly with coil and electroplated bracket" aspectRatio="4 / 3" />
+          <div class="media-sub">
+            <ImageSlot imageKey="product-relay-tray" alt="Batch of railway signal relay assemblies arranged in protective foam tray" aspectRatio="16 / 9" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction and Component Parts Table -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="INTERNAL ARCHITECTURE"
+        title="Assembly Components and Surface Finish"
+        subtitle="The relay assembly integrates precision mechanical stampings, electrical coils, and contact assemblies produced in-house."
+      />
+
+      <table class="table-industrial">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Assembly Part</th>
+            <th style="width: 35%;">Functional Role</th>
+            <th style="width: 40%;">Material and Surface Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Electromagnetic Coil</strong></td>
+            <td>Generates magnetic flux required to actuate the armature and switch contacts.</td>
+            <td>Precision wound insulated copper wire, stress-relieved in vacuum annealing furnace.</td>
+          </tr>
+          <tr>
+            <td><strong>Armature and Contacts</strong></td>
+            <td>Mechanical switching contacts providing reliable make-and-break action for signalling circuits.</td>
+            <td>High-conductivity contact alloys mounted on precision formed spring carriers.</td>
+          </tr>
+          <tr>
+            <td><strong>Mounting Bracket</strong></td>
+            <td>Structural support frame securing the coil, contacts, and base plugboard connection.</td>
+            <td>Heavy-gauge stamped metal with in-house electroplated gold-yellow protective finish.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Engineering Specification Table with Verified Facts -->
+  <section class="section section-paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="SPECIFICATIONS & TESTING"
+        title="What we check and what comes from your drawing"
+        subtitle="Manufacturing and testing are aligned directly to customer engineering drawings and purchase specifications."
+      />
+
+      <table class="table-industrial">
+        <thead>
+          <tr>
+            <th style="width: 45%;">Parameter</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Coil resistance</strong></td>
+            <td>Checked before dispatch. Value as per customer drawing.</td>
+          </tr>
+          <tr>
+            <td><strong>Contact continuity</strong></td>
+            <td>Checked before dispatch.</td>
+          </tr>
+          <tr>
+            <td><strong>Operate and release action</strong></td>
+            <td>Checked before dispatch.</td>
+          </tr>
+          <tr>
+            <td><strong>Operating voltage, contact arrangement and timing</strong></td>
+            <td>Set by the customer drawing or specification.</td>
+          </tr>
+          <tr>
+            <td><strong>Packing</strong></td>
+            <td>Foam-packed for safe transit.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bottom-action-banner card">
+        <p>Send your drawing or specification to discuss feasibility and quotation.</p>
+        <a href="/contact" class="btn btn-primary">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .product-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .product-title {
+    font-size: var(--text-3xl);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .product-lead {
+    font-size: var(--text-lg);
+    color: var(--body);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .key-facts-box {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .fact-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    gap: 16px;
+  }
+
+  .fact-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .fact-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .fact-val {
+    color: var(--body);
+    text-align: right;
+  }
+
+  .product-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .product-hero-media {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bottom-action-banner {
+    padding: 32px;
+    margin-top: 40px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .bottom-action-banner h3 {
+    margin-bottom: 8px;
+  }
+
+  .bottom-action-banner p {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 960px) {
+    .product-hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

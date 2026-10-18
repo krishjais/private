@@ -1,0 +1,21 @@
+{
+  "name": "New Durga Wire Netting Work",
+  "short_name": "New Durga Wire",
+  "description": "Precision manufacturer of railway signal relay assemblies, relay child parts and coach fan guards in Pithampur, Madhya Pradesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#14171F",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

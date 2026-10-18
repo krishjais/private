@@ -1,0 +1,345 @@
+body {
+  font-family: var(--font-body);
+  color: var(--body);
+  background-color: var(--paper);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--text-hero);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-eyebrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.red-rule {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--red);
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section {
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+.section-paper {
+  background-color: var(--paper);
+  color: var(--body);
+}
+
+.section-mist {
+  background-color: var(--mist);
+  color: var(--body);
+}
+
+.section-ink {
+  background-color: var(--ink);
+  color: var(--line);
+}
+
+.section-ink h2,
+.section-ink h3,
+.section-ink strong {
+  color: var(--paper);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--red);
+  color: var(--paper);
+  border: 1px solid var(--red);
+}
+
+.btn-primary:hover {
+  background-color: #B80C17;
+  border-color: #B80C17;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.btn-secondary:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn-secondary-blue {
+  background-color: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.btn-secondary-blue:hover {
+  background-color: var(--blue);
+  color: var(--paper);
+}
+
+.btn-secondary-light {
+  background-color: transparent;
+  color: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.btn-secondary-light:hover {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.card {
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(20, 23, 31, 0.06);
+  transition: border-color var(--transition);
+}
+
+.card:hover {
+  border-color: var(--blue);
+}
+
+.card-major {
+  border-top: 3px solid var(--red);
+}
+
+.corner-brackets {
+  position: relative;
+}
+
+.corner-brackets::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--blue);
+  border-left: 2px solid var(--blue);
+  pointer-events: none;
+}
+
+.corner-brackets::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--blue);
+  border-right: 2px solid var(--blue);
+  pointer-events: none;
+}
+
+.placeholder-badge {
+  display: inline-block;
+  background-color: #FEF08A;
+  color: #854D0E;
+  border: 1px solid #EAB308;
+  padding: 2px 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+.table-industrial {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  background-color: var(--paper);
+}
+
+.table-industrial th {
+  background-color: var(--mist);
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: left;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+}
+
+.table-industrial td {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--body);
+}
+
+.table-industrial tr:nth-child(even) td {
+  background-color: #FAFAFB;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+  transition: border-color var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 16px;
+  z-index: 9999;
+  background-color: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  font-weight: 600;
+  border: 2px solid var(--red);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

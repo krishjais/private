@@ -91,7 +91,41 @@ async function generateFavicons() {
   await sharp(Buffer.from(logoSvg)).resize(180, 180).png().toFile(path.join(pubDir, 'apple-touch-icon.png'));
   await sharp(Buffer.from(logoSvg)).resize(192, 192).png().toFile(path.join(pubDir, 'icon-192.png'));
   await sharp(Buffer.from(logoSvg)).resize(512, 512).png().toFile(path.join(pubDir, 'icon-512.png'));
-  await sharp(Buffer.from(logoSvg)).resize(32, 32).png().toFile(path.join(pubDir, 'favicon.ico'));
+
+  // Build multi-size ICO containing 16x16, 32x32, and 48x48
+  const icoSizes = [16, 32, 48];
+  const pngBuffers = [];
+  for (const s of icoSizes) {
+    const buf = await sharp(Buffer.from(logoSvg)).resize(s, s).png().toBuffer();
+    pngBuffers.push({ size: s, buf });
+  }
+
+  const idCount = pngBuffers.length;
+  const dirSize = 6 + 16 * idCount;
+  let currentOffset = dirSize;
+  const entries = [];
+
+  for (const item of pngBuffers) {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(item.size, 0); // bWidth
+    entry.writeUInt8(item.size, 1); // bHeight
+    entry.writeUInt8(0, 2); // bColorCount
+    entry.writeUInt8(0, 3); // bReserved
+    entry.writeUInt16LE(1, 4); // wPlanes
+    entry.writeUInt16LE(32, 6); // wBitCount
+    entry.writeUInt32LE(item.buf.length, 8); // dwBytesInRes
+    entry.writeUInt32LE(currentOffset, 12); // dwImageOffset
+    entries.push(entry);
+    currentOffset += item.buf.length;
+  }
+
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0);
+  header.writeUInt16LE(1, 2); // 1 = ICO
+  header.writeUInt16LE(idCount, 4);
+
+  const finalIco = Buffer.concat([header, ...entries, ...pngBuffers.map(p => p.buf)]);
+  fs.writeFileSync(path.join(pubDir, 'favicon.ico'), finalIco);
 
   const ogSvg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
     <rect width="1200" height="630" fill="#14171F"/>

@@ -144,6 +144,30 @@ export const siteConfig = {
       finish: "Polished smooth metallic finish.",
       packaging: "Protective poly-wrap and sturdy carton packing.",
       testing: "Weld joint integrity, wire spacing inspection, and polish quality."
+    },
+    {
+      id: "pillar-bush",
+      name: "Industrial Pillar Bush",
+      shortName: "Pillar Bush",
+      slug: "/products/pillar-bush",
+      isMajor: false,
+      imageKey: "product-pillar-bush",
+      summary: "Turned pillar bushes for press tool and die sets, made to your drawing in our Pithampur works.",
+      finish: "Turned precision surface finish as per drawing.",
+      packaging: "Protective batch packing.",
+      testing: "Dimensional verification, threads and burrs against drawing."
+    },
+    {
+      id: "stainless-steel-bush",
+      name: "Stainless Steel Bush",
+      shortName: "Stainless Steel Bush",
+      slug: "/products/stainless-steel-bush",
+      isMajor: false,
+      imageKey: "product-stainless-steel-bush",
+      summary: "Turned stainless steel bushes made to your drawing in our Pithampur works. Used to line bores, space parts or guide moving parts.",
+      finish: "Turned corrosion-resistant surface finish as per drawing.",
+      packaging: "Protective batch packing.",
+      testing: "Dimensional verification, threads and burrs against drawing."
     }
   ],
 

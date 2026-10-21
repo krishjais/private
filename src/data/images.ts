@@ -174,5 +174,19 @@ export const siteImages: Record<string, ImageMeta> = {
     width: 1193,
     height: 1600,
     replaceWithRealPhoto: false
+  },
+  "product-pillar-bush": {
+    src: "/images/product-pillar-bush.webp",
+    alt: "Turned steel pillar bushes and stepped pins on a workshop bench",
+    width: 1448,
+    height: 1086,
+    replaceWithRealPhoto: true
+  },
+  "product-stainless-steel-bush": {
+    src: "/images/product-stainless-steel-bush.webp",
+    alt: "Turned stainless steel bushes in a pile on a workshop bench",
+    width: 1448,
+    height: 1086,
+    replaceWithRealPhoto: true
   }
 };

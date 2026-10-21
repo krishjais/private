@@ -1,0 +1,230 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ImageSlot from '../../components/ImageSlot.astro';
+
+const pageTitle = "Stainless Steel Bush | Turned CNC Bushes";
+const pageDescription = "Turned stainless steel bushes made to your drawing in our Pithampur works. Corrosion resistant cylindrical sleeves for machinery and fittings.";
+
+const tableRows = [
+  { parameter: "Stainless steel grade", details: "Agreed at enquiry" },
+  { parameter: "Inner diameter, outer diameter and length", details: "As per customer drawing" },
+  { parameter: "Tolerance and surface finish", details: "As per customer drawing" },
+  { parameter: "Quantity and delivery", details: "Agreed at enquiry" }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs
+    crumbs={[
+      { name: 'Products', href: '/products' },
+      { name: 'Stainless Steel Bush', href: '/products/stainless-steel-bush' }
+    ]}
+  />
+
+  <section class="section section-paper">
+    <div class="container">
+      <div class="product-hero-grid">
+        <div class="product-hero-info">
+          <span class="eyebrow">PRECISION TURNED COMPONENT</span>
+          <h1 class="product-title">Stainless steel bush</h1>
+          <span class="red-rule"></span>
+          <p class="product-lead">
+            Turned stainless steel bushes made to your drawing in our Pithampur works.
+          </p>
+
+          <div class="description-block card">
+            <h3>What it is</h3>
+            <p>
+              A bush is a hollow cylindrical sleeve used to line a bore, space parts or guide a moving part in machinery and fittings. Stainless steel is used where corrosion resistance matters.
+            </p>
+
+            <h3>How we make it</h3>
+            <p>
+              Turned in house on CNC turning machines, to customer drawing.
+            </p>
+
+            <div class="compliance-note">
+              <p>
+                <strong>Inspection:</strong> Machined parts are checked for dimensions, threads and burrs against the drawing.
+              </p>
+              <p>
+                Manufactured under a quality management system certified to <a href="/quality">ISO 9001:2015</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="product-cta-row">
+            <a href="/contact" class="btn btn-primary">
+              Send your drawing or sample
+            </a>
+            <a href="/manufacturing" class="btn btn-secondary">
+              View Machinery
+            </a>
+            <a href="/job-work" class="btn btn-secondary">
+              Job Work Services
+            </a>
+          </div>
+        </div>
+
+        <div class="product-hero-media">
+          <ImageSlot
+            imageKey="product-stainless-steel-bush"
+            alt="Turned stainless steel bushes in a pile on a workshop bench"
+            aspectRatio="4 / 3"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specification Table -->
+  <section class="section section-mist">
+    <div class="container">
+      <SectionHeading
+        eyebrow="SPECIFICATIONS"
+        title="What comes from your drawing"
+        subtitle="Every dimension and tolerance is produced strictly to customer engineering drawings."
+      />
+
+      <div class="table-wrap">
+        <table class="table-industrial">
+          <thead>
+            <tr>
+              <th style="width: 45%;">Parameter</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableRows.map((row) => (
+              <tr>
+                <td><strong>{row.parameter}</strong></td>
+                <td>{row.details}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Strip -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="bottom-action-banner card">
+        <h3>Send your drawing or sample</h3>
+        <p>
+          We manufacture turned stainless steel bushes to customer drawing or sample. Send your requirements for quotation.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .product-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .product-title {
+    font-size: var(--text-3xl);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .product-lead {
+    font-size: var(--text-lg);
+    color: var(--body);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .description-block {
+    padding: 24px;
+    margin-bottom: 32px;
+    background-color: var(--mist);
+  }
+
+  .description-block h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    color: var(--ink);
+  }
+
+  .description-block h3:first-child {
+    margin-top: 0;
+  }
+
+  .description-block p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .compliance-note {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .compliance-note p {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .compliance-note a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+
+  .product-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .product-hero-media {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .bottom-action-banner {
+    padding: 36px;
+    text-align: center;
+    background-color: var(--mist);
+  }
+
+  .bottom-action-banner h3 {
+    margin-bottom: 8px;
+  }
+
+  .bottom-action-banner p {
+    margin-bottom: 24px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 960px) {
+    .product-hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
